@@ -1,0 +1,15 @@
+ {% autoescape off %}
+
+ 
+Welcome to our family    {{ user.first_name  }}
+
+
+please verify the account to login
+
+
+please click the link below for confirming
+http://{{domain}}{% url 'activate' uidb64=uid token=token %}
+
+If youo thing its not you,please ignor the email
+
+ {% endautoescape %}

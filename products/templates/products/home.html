@@ -1,0 +1,619 @@
+
+
+{%  load static %}
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<title>Footwear - Free Bootstrap 4 Template by Colorlib</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- <link rel="stylesheet" href="{% static 'user/css/st.css'  %"> -->
+	<!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet"> -->
+	<link href="https://fonts.googleapis.com/css?family=Rokkitt:100,300,400,700" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	
+	<!-- Animate.css -->
+		<link rel="stylesheet" href="{% static 'user/css/animate.css' %}">
+	<!-- Icomoon Icon Fonts-->
+		<link rel="stylesheet" href="{% static 'user/css/icomoon.css' %}">
+	<!-- Ion Icon Fonts-->
+		<link rel="stylesheet" href="{% static 'user/css/ionicons.min.css' %}">
+	<!-- Bootstrap  -->
+		<link rel="stylesheet" href="{% static 'user/css/bootstrap.min.css' %}">
+
+	<!-- Magnific Popup -->
+		<link rel="stylesheet" href="{% static 'user/css/magnific-popup.css' %}">
+
+	<!-- Flexslider  -->
+		<link rel="stylesheet" href="{% static 'user/css/flexslider.css' %}">
+
+	<!-- Owl Carousel -->
+		<link rel="stylesheet" href="{% static 'user/css/owl.carousel.min.css' %}">
+		<link rel="stylesheet" href="{% static 'user/css/owl.theme.default.min.css' %}">
+	
+	<!-- Date Picker -->
+		<link rel="stylesheet" href="{% static 'user/css/bootstrap-datepicker.css' %}">
+	<!-- Flaticons  -->
+		<link rel="stylesheet" href="{% static 'user/fonts/flaticon/font/flaticon.css' %}">
+
+	<!-- Theme style  -->
+		<link rel="stylesheet" href="{% static 'user/css/style.css' %}">
+		<link rel="stylesheet" href="{% static 'user/css/stle.css' %}">
+        
+
+
+	</head>
+	<body style="background-color: rgba(180, 227, 224, 0.274);">
+		
+	<div class="colorlib-loader"></div>
+
+	<div id="page">
+		<nav class="colorlib-nav bg-light"  role="navigation">
+			<div class="top-menu">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-7 col-md-9">
+							<img style="width: 130px; height: 130px; margin-top: -50px;" src="{% static 'home/images/bg/l1.png'  %}" alt="">
+							<div id="colorlib-logo"><a href="index.html" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">SportsBasket.com</a></div>
+							
+						</div>
+						<div class="col-sm-5 col-md-3">
+			            <form action="#" class="search-wrap">
+			               <div class="form-group">
+			                  <input type="search" class="form-control search" placeholder="Search">
+			                  <button class="btn btn-primary submit-search text-center" type="submit"><i class="icon-search"></i></button>
+			               </div>
+			            </form>
+			         </div>
+		         </div>
+					<div class="row">
+						<div class="col-sm-12 text-left menu-1">
+							<ul>
+								<li class=""><a style="color: black; " href="{% url 'home' %}">Home</a></li>
+								<li class="has-dropdown active dropdown-lg">
+									<a style="font-size: large; color: black;" href="">Category</a>
+									<ul class="dropdown">{% for link in links %}
+										<li><a href="{{ link.get_url }}"> {{ link.title }}</a></li>
+										<!-- <li><a href="cart.html">CRICKET </a></li>
+										<li><a href="checkout.html">VOLLEYBALL</a></li>
+										<li><a href="order-complete.html"> BASCKETBALL</a></li>
+										<li><a href="add-to-wishlist.html">BASEBALL</a></li>
+										<li><a href="order-complete.html"> BADMINDON</a></li>
+										<li><a href="add-to-wishlist.html">TENNIES</a></li>
+										<li><a href="add-to-wishlist.html">HOCKEY</a></li> -->{% endfor %}
+									</ul>
+								</li>
+						
+								<li class="dropdown">
+									<button class="btn btn-sucess dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									  Account 
+									</button>
+									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									  <a style="font-family: Arial, Helvetica, sans-serif;" class="dropdown-item" href="{% url 'login' %}">Login</a>
+									  <a style="font-family: Arial, Helvetica, sans-serif;" class="dropdown-item" href="{% url 'register' %}">Sign Up</a>
+									
+									</div>
+								</li>														
+								<li><a href="about.html">Profile</a></li>
+								<li><a href="contact.html">Contact</a></li>
+								{% if user.is_authenticated  %}
+								<li  class="cart me-3 ms-4 ms-auto me-auto"><a href="{%   url 'logout' %}"><i class="fa fa-sign-out fa-2x"  aria-hidden="true"><h5 >Log Out</h5></i></li>
+									{% else %}
+								<li  class="cart me-3 ms-4 ms-auto me-auto"><a href="{%  url 'login'   %}"><i class="fa fa-sign-in fa-2x " aria-hidden="true"><h5 >Log In</h5></i></li>
+									{% endif %}
+									
+
+								<li class="cart me-3 ms-4 ms-auto me-auto"><a href="cart.html"><i class="fa fa-cart-arrow-down fa-2x" aria-hidden="true"><h5> Cart</h5></i></li>
+								<li  class="cart me-3 ms-4 ms-auto me-auto"><a href="cart.html"><i  class="fa fa-heart fa-2x " aria-hidden="true"><h5>Wishlist</h5></i></li>
+						
+									
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="sale bg-dark">
+				<div class="container ">
+					<div class="row ">
+						<div class="col-sm-8 offset-sm-2 text-center">
+							<div class="row">
+								<div class="owl-carousel2">
+									<div class="item">
+										<div class="col">
+											<h3><a href="#">You Are my Assets</a></h3>
+										</div>
+									</div>
+									<div class="item">
+										<div class="col">
+											<h3><a href="#">Stay Healthy</a></h3>
+										</div>
+									</div>
+									<div class="item">
+										<div class="col">
+											<h3><a href="#">play well</a></h3>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+<!-- <div class="carousel-item">
+    <img src="{% static 'home/images/bg/1.jpg'   %}" alt="...">
+    <div class="carousel-caption d-none d-md-block">
+      <h5 style="color: red;">.Heyy</h5>
+      <p>hello</p>
+    </div>
+  </div> -->
+<aside id="colorlib-hero">
+    <div class="flexslider">
+        <ul class="slides">
+           <li style="background-image: url('/static/home/images/bg/qq.jpg');">
+               <div class="overlay"></div>
+               <div class="container-fluid">
+                   <div class="row">
+                       <div class="col-sm-6 offset-sm-3 text-center slider-text">
+                           <div class="slider-text-inner">
+                               <div class="desc">
+                                   <h1 class="head-1">Men's</h1>
+                                   <h2 class="head-2">Shoes</h2>
+                                   <h2 class="head-3">Collection</h2>
+                                   <p class="category"><span>New trending shoes</span></p>
+                                   <p><a href="#" class="btn btn-primary">Shop Collection</a></p>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </li>
+           <li style="background-image: url('/static/home/images/bg/.jpg');">
+               <div class="overlay"></div>
+               <div class="container-fluid">
+                   <div class="row">
+                       <div class="col-sm-6 offset-sm-3 text-center slider-text">
+                           <div class="slider-text-inner">
+                               <div class="desc">
+                                   <h1 class="head-1">Huge</h1>
+                                   <h2 class="head-2">Sale</h2>
+                                   <h2 class="head-3"><strong class="font-weight-bold">50%</strong> Off</h2>
+                                   <p class="category"><span>Big sale sandals</span></p>
+                                   <p><a href="#" class="btn btn-primary">Shop Collection</a></p>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </li>
+           <li style="background-image: url(images/img_bg_3.jpg);">
+               <div class="overlay"></div>
+               <div class="container-fluid">
+                   <div class="row">
+                       <div class="col-sm-6 offset-sm-3 text-center slider-text">
+                           <div class="slider-text-inner">
+                               <div class="desc">
+                                   <h1 class="head-1">New</h1>
+                                   <h2 class="head-2">Arrival</h2>
+                                   <h2 class="head-3">up to <strong class="font-weight-bold">30%</strong> off</h2>
+                                   <p class="category"><span>New stylish shoes for men</span></p>
+                                   <p><a href="#" class="btn btn-primary">Shop Collection</a></p>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </li>
+          </ul>
+      </div>
+</aside>
+<!-- <div class="colorlib-intro">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h2 class="intro">It started with a simple idea: Create quality, well-designed products that I wanted myself.</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="colorlib-product">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6 text-center">
+                <div class="featured">
+                    <a href="#" class="featured-img" style="background-image: url(images/men.jpg);"></a>
+                    <div class="desc">
+                        <h2><a href="#">Shop Men's Collection</a></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 text-center">
+                <div class="featured">
+                    <a href="#" class="featured-img" style="background-image: url(images/women.jpg);"></a>
+                    <div class="desc">
+                        <h2><a href="#">Shop Women's Collection</a></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<br>
+
+
+
+<!-- CATEGORY IMAGES   -->
+
+
+<section  class="categorys mt-5">
+    <div class="container mt-5">
+        <div class="row mt-5" >
+            <div class="col-sm-12">
+                <div class="section-title mt-5">
+                    <strong><h1>Shop with categorys</h1></strong>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">{% for link in links %}
+            <div class="col-lg-3 col-md-4 col-sm-6 col-6 ">
+                <div class="productcategory text-center">
+                    <div class="productcategory-img mt-5">
+                        <a href="{{  link.get_url }}"><img src="{{ link.image.url}}" class="rounded-circle border border-2 border-primary" alt="Avatar"alt="images"></a>
+                    </div>
+                    <div class="productcategory-text">
+                        <a href="#">
+                            <br>
+                           <strong><a href=""><h3>{{ link.title }}</h3></a> </strong>
+                          
+                        </a>
+                    </div>
+                </div>
+            </div>{% endfor %}
+          
+</section>
+
+<!-- cardsss -->
+
+
+
+<div class="colorlib-product">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 offset-sm-2 text-center colorlib-heading">
+                <h2 style="color: blue;">Best Sold  </h2>
+                <hr>
+            </div>
+            
+        </div>   
+    </div>
+</div>   
+
+    <div class="row row-pb-md .hov-img0 border-radius: 20% d-flex text-center justify-content-center hover-overlay hover-zoom  "> {% for pro in pro %}
+            <div class="col-lg-3 .hov-img0 border-radius: 20% d-flex text-center justify-content-center pl-3  m-5 text-center hover-zoom ">    
+                <div style="border-radius: 30px; width:700px;  "  class="product-entry  .hov-img0
+                 border img-rounded  hover-zoom border border-primary shadow  bg-white">
+                 
+                    <a href="#" class="prod-image border hover-zoom">  
+                        <!-- <img  src="{{ pro.image.url }}" class="img-fluid hover-overlay  hover-zoom" alt="Avatar"> -->
+                        <div class="view overlay">
+                            <img  src="{{ pro.image.url }}" class="img-fluid " alt="smaple image">
+                            <div class="mask flex-center rgba-red-strong">
+                                <p class="white-text">Strong overlay</p>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="desc">
+                        <h2><a style="font-weight: 700;background-color: rgba(147, 147, 193, 0.293);" href="#">{{pro.name}}</a></h2>
+                        <span  style="font-weight: 700; background-color: rgba(42, 202, 202, 0.253);" class="price">${{ pro.price }}</span>
+                    </div>
+               <a href="">
+                <button type="button" class="btn btn-danger btn-lg"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> To cart</button>
+               </a>
+                    <a href="">
+                        <button type="button" class="btn btn-lg btn-info"><i class="fa fa-heart" aria-hidden="true">  Fav</i></button>
+                    </a>
+                  <br>
+                  <br>
+                  <div>
+
+                  </div>
+                </div>
+           
+            </div>
+            {% endfor %}
+
+     
+    </div>
+            <!-- <div class="col-lg-3 mb-4 text-center">
+                <div class="product-entry border">
+                    <a href="#" class="prod-img">
+                        <img src="images/item-2.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                    </a>
+                    <div class="desc">
+                        <h2><a href="#">Women's Minam Meaghan</a></h2>
+                        <span class="price">$139.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 mb-4 text-center">
+                <div class="product-entry border">
+                    <a href="#" class="prod-img">
+                        <img src="images/item-3.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                    </a>
+                    <div class="desc">
+                        <h2><a href="#">Men's Taja Commissioner</a></h2>
+                        <span class="price">$139.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 mb-4 text-center">
+                <div class="product-entry border">
+                    <a href="#" class="prod-img">
+                        <img src="images/item-4.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                    </a>
+                    <div class="desc">
+                        <h2><a href="#">Russ Men's Sneakers</a></h2>
+                        <span class="price">$139.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-lg-3 mb-4 text-center">
+                <div class="product-entry border">
+                    <a href="#" class="prod-img">
+                        <img src="images/item-5.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                    </a>
+                    <div class="desc">
+                        <h2><a href="#">Women's Boots Shoes Maca</a></h2>
+                        <span class="price">$139.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 mb-4 text-center">
+                <div class="product-entry border">
+                    <a href="#" class="prod-img">
+                        <img src="images/item-6.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                    </a>
+                    <div class="desc">
+                        <h2><a href="#">Women's Boots Shoes Maca</a></h2>
+                        <span class="price">$139.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 mb-4 text-center">
+                <div class="product-entry border">
+                    <a href="#" class="prod-img">
+                        <img src="images/item-7.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                    </a>
+                    <div class="desc">
+                        <h2><a href="#">Women's Boots Shoes Maca</a></h2>
+                        <span class="price">$139.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 mb-4 text-center">
+                <div class="product-entry border">
+                    <a href="#" class="prod-img">
+                        <img src="images/item-8.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                    </a>
+                    <div class="desc">
+                        <h2><a href="#">Women's Boots Shoes Maca</a></h2>
+                        <span class="price">$139.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-lg-3 mb-4 text-center">
+                <div class="product-entry border">
+                    <a href="#" class="prod-img">
+                        <img src="images/item-9.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                    </a>
+                    <div class="desc">
+                        <h2><a href="#">Women's Boots Shoes Maca</a></h2>
+                        <span class="price">$139.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 mb-4 text-center">
+                <div class="product-entry border">
+                    <a href="#" class="prod-img">
+                        <img src="images/item-10.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                    </a>
+                    <div class="desc">
+                        <h2><a href="#">Women's Boots Shoes Maca</a></h2>
+                        <span class="price">$139.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 mb-4 text-center">
+                <div class="product-entry border">
+                    <a href="#" class="prod-img">
+                        <img src="images/item-11.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                    </a>
+                    <div class="desc">
+                        <h2><a href="#">Women's Boots Shoes Maca</a></h2>
+                        <span class="price">$139.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 mb-4 text-center">
+                <div class="product-entry border">
+                    <a href="#" class="prod-img">
+                        <img src="images/item-12.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                    </a>
+                    <div class="desc">
+                        <h2><a href="#">Women's Boots Shoes Maca</a></h2>
+                        <span class="price">$139.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-lg-3 mb-4 text-center">
+                <div class="product-entry border">
+                    <a href="#" class="prod-img">
+                        <img src="images/item-13.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                    </a>
+                    <div class="desc">
+                        <h2><a href="#">Women's Boots Shoes Maca</a></h2>
+                        <span class="price">$139.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 mb-4 text-center">
+                <div class="product-entry border">
+                    <a href="#" class="prod-img">
+                        <img src="images/item-14.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                    </a>
+                    <div class="desc">
+                        <h2><a href="#">Women's Boots Shoes Maca</a></h2>
+                        <span class="price">$139.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 mb-4 text-center">
+                <div class="product-entry border">
+                    <a href="#" class="prod-img">
+                        <img src="images/item-15.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                    </a>
+                    <div class="desc">
+                        <h2><a href="#">Women's Boots Shoes Maca</a></h2>
+                        <span class="price">$139.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 mb-4 text-center">
+                <div class="product-entry border">
+                    <a href="#" class="prod-img">
+                        <img src="images/item-16.jpg" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                    </a>
+                    <div class="desc">
+                        <h2><a href="#">Women's Boots Shoes Maca</a></h2>
+                        <span class="price">$139.00</span>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- <div class="row">
+            <div class="col-md-12 text-center">
+                <p><a href="#" class="btn btn-primary btn-lg">Shop All Products</a></p>
+            </div>
+        </div>
+    </div> -->
+
+
+<div class="colorlib-partner">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 offset-sm-2 text-center colorlib-heading colorlib-heading-sm">
+                <h2>Trusted Partners</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col partner-col text-center">
+                <img src="{%   static 'home/images/brand/b1.jpg' %}" class="img-fluid" alt="Free html4 bootstrap 4 template">
+            </div>
+            <div class="col partner-col text-center">
+                <img src="{%   static 'home/images/brand/b2.jpg' %}" class="img-fluid" alt="Free html4 bootstrap 4 template">
+            </div>
+            <div class="col partner-col text-center">
+                <img src="{%   static 'home/images/brand/b3.jpg' %}" class="img-fluid" alt="Free html4 bootstrap 4 template">
+            </div>
+            <div class="col partner-col text-center">
+                <img src="{%   static 'home/images/brand/b4.jpg' %}" class="img-fluid" alt="Free html4 bootstrap 4 template">
+            </div>
+            <div class="col partner-col text-center">
+                <img src="{%   static 'home/images/brand/b5.jpg' %}" class="img-fluid" alt="Free html4 bootstrap 4 template">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="bg-dark" id="colorlib-footer" role="contentinfo">
+    <div class="container">
+        <div class="row row-pb-md">
+            <div class="col footer-col colorlib-widget">
+                <h4>About Footwear</h4>
+                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
+                <p>
+                    <ul class="colorlib-social-icons">
+                        <li><a href="#"><i class="icon-twitter"></i></a></li>
+                        <li><a href="#"><i class="icon-facebook"></i></a></li>
+                        <li><a href="#"><i class="icon-linkedin"></i></a></li>
+                        <li><a href="#"><i class="icon-dribbble"></i></a></li>
+                    </ul>
+                </p>
+            </div>
+            <div class="col footer-col colorlib-widget">
+                <h4>Customer Care</h4>
+                <p>
+                    <ul class="colorlib-footer-links">
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Returns/Exchange</a></li>
+                        <li><a href="#">Gift Voucher</a></li>
+                        <li><a href="#">Wishlist</a></li>
+                        <li><a href="#">Special</a></li>
+                        <li><a href="#">Customer Services</a></li>
+                        <li><a href="#">Site maps</a></li>
+                    </ul>
+                </p>
+            </div>
+            <div class="col footer-col colorlib-widget">
+                <h4>Information</h4>
+                <p>
+                    <ul class="colorlib-footer-links">
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Delivery Information</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Order Tracking</a></li>
+                    </ul>
+                </p>
+            </div>
+
+       
+  
+                    <span class="block">Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a> , <a href="http://pexels.com/" target="_blank">Pexels.com</a></span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+	<!-- jQuery -->
+	<script src="{% static 'user/js/jquery.min.js' %}"></script>
+   <!-- popper -->
+   <script src="{% static 'user/js/popper.min.js' %}"></script>
+   <!-- bootstrap 4.1 -->
+   <script src="{% static 'user/js/bootstrap.min.js' %}"></script>
+   <!-- jQuery easing -->
+   <script src="{% static 'user/js/jquery.easing.1.3.js' %}"></script>
+	<!-- Waypoints -->
+	<script src="{% static 'user/js/jquery.waypoints.min.js' %}"></script>
+	<!-- Flexslider -->
+	<script src="{% static 'user/js/jquery.flexslider-min.js' %}"></script>
+	<!-- Owl carousel -->
+	<script src="{% static 'user/js/owl.carousel.min.js' %}"></script>
+	<!-- Magnific Popup -->
+	<script src="{% static 'user/js/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'user/js/magnific-popup-options.js' %}"></script>
+	<!-- Date Picker -->
+		<script src="{% static 'user/js/bootstrap-datepicker.js' %}"></script>
+	<!-- Stellar Parallax -->
+		<script src="{% static 'user/js/jquery.stellar.min.js' %}"></script>
+	<!-- Main -->
+		<script src="{% static 'user/js/main.js' %}"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+	
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,165 @@
+
+
+{%  load static %}
+
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+
+<head>
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="img/fav.png">
+	<!-- Author Meta -->
+	<meta name="author" content="CodePixar">
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>Karma Shop</title>
+	<!--
+		CSS
+		============================================= -->
+	<link rel="stylesheet" href="{% static 'test/css/linearicons.css' %}">
+	<link rel="stylesheet" href="{% static 'test/css/font-awesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'test/css/themify-icons.css' %}">
+	<link rel="stylesheet" href="{% static 'test/css/bootstrap.css' %}">
+	<link rel="stylesheet" href="{% static 'test/css/owl.carousel.css' %}">
+	<link rel="stylesheet" href="{% static 'test/css/nice-select.css' %}">
+	<link rel="stylesheet" href="{% static 'test/css/nouislider.min.css' %}">
+	<link rel="stylesheet" href="{% static 'test/css/ion.rangeSlider.css' %}" />
+	<link rel="stylesheet" href="{% static 'test/css/ion.rangeSlider.skinFlat.css' %}" />
+	<link rel="stylesheet" href="{% static 'test/css/magnific-popup.css' %}">
+	<link rel="stylesheet" href="{% static 'test/css/main.css' %}">
+	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body style="background-color: #efeeea25 ;">
+
+	<!-- Start Header Area -->
+	<header class="header_area sticky-header">
+		<div class="main_menu">
+			<nav class="navbar navbar-expand-lg navbar-light main_box">
+				<div class="container">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<a class="navbar-brand logo_h" href="index.html"><img style="width: 70px; height: 70px;" src="{%  static 'home/images/bg/l1.png' %}" alt=""></a>
+					<h3>SportsBasket.com</h3>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+						<ul class="nav navbar-nav menu_nav ml-auto">
+							<li class="nav-item active"><a class="nav-link" href="{%  url 'home' %}">Home</a></li>
+							<li class="nav-item submenu dropdown">
+								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+								 aria-expanded="false">Category</a>
+								<ul class="dropdown-menu">{% for  link in links %}
+									<li class="nav-item"><a class="nav-link" href="{{link.get_url}}">{{ link.title }}</a></li>
+									{% endfor %}
+								</ul>
+							</li>
+							<!-- <li class="nav-item submenu dropdown">
+								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+								 aria-expanded="false">Blog</a>
+								<ul class="dropdown-menu">
+									<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+									<li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
+								</ul>
+							</li> -->
+							<li class="nav-item submenu dropdown">
+								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+								 aria-expanded="false">Account</a>
+								<ul class="dropdown-menu">
+									<li class="nav-item"><a class="nav-link" href="login.html">Profile</a></li>
+									<li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Log In</a></li>
+									<li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Sign Up</a></li>
+								</ul>
+							</li>
+							<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+							<li><a href="{% url 'cart' %}">						
+								<button type="button" class="btn btn-primary">
+									<span class="badge bg-danger ms-2">{{ cart_count}}</span>
+									   <span class="visually-hidden">Cart</span>
+									 </button>
+									</a>
+									</li>
+							<!-- <li><div id="ex4">
+						<a href="{%  url 'cart' %}"><span class="p1 fa-stack fa-2x has-badge" data-count="{{ cart_count }}"> -->
+								  <!--<i class="p2 fa fa-circle fa-stack-2x"></i>-->
+								  <!-- <i class="p3 fa fa-shopping-cart fa-stack-1x xfa-inverse" data-count="4b"></i> -->
+<!-- 								
+								</span></a> -->
+							  <!-- </div></li> -->
+							  
+							<li class="nav-item"><a  class="nav-link  fw-3" >
+								<!-- <i class="fa fa-cart-arrow-down  fa-2x" aria-hidden="true"></i></a></li> -->
+								
+							<li class="nav-item"><a class="nav-link" href="contact.html" ><i class="fa fa-heart fa-2x" aria-hidden="true"></i>
+							</a></li>
+														
+						{% if user.is_authenticated %}
+						<li class="nav-item active"><a class="nav-link" href="{%  url 'logout' %}">Log Out</a></li>
+						{% else %}
+						<li class="nav-item active"><a class="nav-link" href="{%  url 'login' %}">Log In</a></li>
+						{% endif %}
+						<ul class="nav navbar-nav navbar-right">
+							
+						
+							
+							<li class="nav-item">
+								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
+							</li>
+							
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+		<div class="search_input" id="search_input_box">
+			<div class="container">
+				<form class="d-flex justify-content-between" action="{% url 'search' %}" method="GET">
+					<input type="text" class="form-control" id="search_input" name="keyword" placeholder="Search Here">
+					<button type="submit" class="btn"></button>
+					<span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
+				</form>
+			</div>
+		</div>
+	</header>
+	<!-- End Header Area -->
+
+	{%  block content %}
+
+
+	{% endblock %}
+	
+	<!-- End related-product Area -->
+
+	<!-- start footer Area -->
+
+<!-- End footer Area -->
+
+<script src="{% static 'test/js/vendor/jquery-2.2.4.min.js' %}"></script>
+<script src="{% static 'test/https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js' %}" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+	crossorigin="anonymous"></script>
+<script src="{% static 'test/js/vendor/bootstrap.min.js' %}"></script>
+<script src="{% static 'test/js/jquery.ajaxchimp.min.js' %}"></script>
+<script src="{% static 'test/js/jquery.nice-select.min.js' %}"></script>
+<script src="{% static 'test/js/jquery.sticky.js' %}"></script>
+<script src="{% static 'test/js/nouislider.min.js' %}"></script>
+<script src="{% static 'test/js/countdown.js' %}"></script>
+<script src="{% static 'test/js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'test/js/owl.carousel.min.js' %}"></script>
+<!--gmaps Js-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+<script src="{% static 'test/js/gmaps.min.js' %}"></script>
+<script src="{% static 'test/js/main.js' %}"></script>
+</body>
+
+</html>
