@@ -1,6 +1,3 @@
-from hashlib import blake2s
-from math import degrees
-from statistics import mode
 from django.db import models
 from user.models import Account
 from products.models import Product,Variation

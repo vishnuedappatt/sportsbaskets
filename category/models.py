@@ -1,5 +1,3 @@
-from ast import mod
-from distutils.command import upload
 from django.db import models
 from django.urls import reverse
 

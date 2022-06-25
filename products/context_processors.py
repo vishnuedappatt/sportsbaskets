@@ -1,7 +1,6 @@
 from category.models import Category,SubCategory
 from .models import Cart,CartItem
 from .views import _cart_id
-from django.core.exceptions import ObjectDoesNotExist
 
 
 def menu_links(request):

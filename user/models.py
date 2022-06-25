@@ -1,11 +1,3 @@
-from asyncio.windows_events import NULL
-from datetime import datetime
-import email
-from email.mime import image
-from operator import mod
-from pyexpat import model
-from re import T
-from tkinter import CASCADE
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
 # Create your models here.
