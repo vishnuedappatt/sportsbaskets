@@ -34,7 +34,8 @@ def admin_login(request):
         print('done')
         if user is not None:
             if user.is_superadmin:
-                auth.login (request,user)       
+                auth.login (request,user)
+                request.session['admin']=password       
                 return redirect('adminhome')
             else:
                 messages.error(request,'No entry')

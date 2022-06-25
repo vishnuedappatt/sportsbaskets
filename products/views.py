@@ -17,6 +17,8 @@ from django.contrib import messages
 
 
 def home(request):
+    if 'admin' in request.session:
+        return redirect('adminhome')
     categories=Category.objects.all()
     products=Product.objects.filter(section__name='home')[0:8]
     related_product=Product.objects.all().order_by('-id')[0:8]

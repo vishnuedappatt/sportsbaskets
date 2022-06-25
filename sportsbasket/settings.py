@@ -10,7 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+from email.policy import default
 from pathlib import Path
+from decouple import config
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -21,10 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-4g4j9#$^d0=ol-(3nim@bwg$)n9k-6y=)w13038-1n9su75mr9'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG =config('DEBUG' ,default=True, cast=bool)
 
 ALLOWED_HOSTS = []
 
@@ -141,21 +143,21 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/static/'
+STATIC_ROOT = 'staticfiles'
 STATICFILES_DIRS = [
     os.path.join( BASE_DIR / "static")
  ]
 
 #media file confirmation email
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST ='smtp.gmail.com'
-EMAIL_PORT= 587
-EMAIL_HOST_USER ='basketsports3@gmail.com'
-EMAIL_HOST_PASSWORD='qnknvpbtzfhxcacb'
+EMAIL_BACKEND = config('EMAIL_BACKEND')
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT= config('EMAIL_PORT' ,cast=int)
+EMAIL_HOST_USER =config('EMAIL_HOST_USER') 
+EMAIL_HOST_PASSWORD=config('EMAIL_HOST_PASSWORD') 
 # EMAIL_HOST_USER ='vishnuedappatt@gmail.com'
 # EMAIL_HOST_PASSWORD='Epunhsiv'
 
-EMAIL_USE_TLS = True
+EMAIL_USE_TLS = config('EMAIL_USE_TLS')
 
 
 
@@ -171,13 +173,12 @@ MEDIA_URL  = '/media/'
 	
 LOGIN_URL = '/login/'
 
-TWILIO_VERIFY_SERVICE_SID='VAb077612886620064dc1d255d9734bfb5'
-TWILIO_ACCOUNT_SID= 'AC959461d2f3e75d399fa51896e2d37ea8'
-TWILIO_AUTH_TOKEN= '9469f37f8705029dee83062e66df6e37'
-
+TWILIO_VERIFY_SERVICE_SID=config('TWILIO_VERIFY_SERVICE_SID')
+TWILIO_ACCOUNT_SID= config('TWILIO_ACCOUNT_SID')
+TWILIO_AUTH_TOKEN= config('TWILIO_AUTH_TOKEN') 
 
 GOOGLE_RECAPTCHA_SECRET_KEY = '6LeNJpIgAAAAAMI3ZOUc6Bbn6tIBy-SRjtxYIsYC'
 
 
-RAZORPAY_ID='rzp_test_EsWN1MNLnJr3lq'
-RAZORPAY_KEY='3mB15mFeOmloSZAV5j6UPjtm'
+RAZORPAY_ID=config('RAZORPAY_ID')
+RAZORPAY_KEY=config ('RAZORPAY_KEY')
