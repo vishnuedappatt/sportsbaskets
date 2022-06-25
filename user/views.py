@@ -1,23 +1,12 @@
-from ast import Sub
-from email import message
-from itertools import product
-from multiprocessing import context
-import re
-import site
-# from typing_extensions import Required
-import django
-from django.http import HttpResponse
+
+
+
+
 from django.shortcuts import redirect, render
 
 from products.forms import ReviewForm
 
-# from sportsbasket import user
 
-# from sportsbasket.products.models import Section
-
-# from sportsbasket import user
-# from sportsbasket import user
-# from sportsbasket.user.models import Account
 from .forms import RegistrationForm ,VerifyForm,EditProfileForm
 from .models import Account,Address
 from django.contrib.auth.decorators import login_required
@@ -34,8 +23,8 @@ from django.core.mail import EmailMessage
 
 #products details
 
-from products.models import Product,Reviews
-from category.models import Category,SubCategory
+from products.models import Reviews
+
 from adminz.models import BlockedUser
 
 from orders.models import OrderProduct,Order
@@ -100,7 +89,7 @@ def login(request):
     if request.method =='POST':
         email =request.POST['email']
         password=request.POST['Password'] 
-        account=Account.objects.filter(email=email,is_active=False).exists() 
+        account=Account.objects.filter(email=email,is_active=False).exists()
      
         print('heyy')
         if account :

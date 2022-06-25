@@ -1,14 +1,9 @@
-# from email import message
-from http import client
-from itertools import product
-from locale import currency
-from urllib import response
-from django import http
+
 from django.shortcuts import redirect, render
-from requests import request
-from products.models import CartItem,Cart
+
+from products.models import CartItem
 from products.models import Product
-from products.models import Variation,Discount
+from products.models import Discount
 
 from .models import Order, OrderProduct,Payment
 import datetime

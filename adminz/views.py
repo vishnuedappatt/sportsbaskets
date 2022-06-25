@@ -1,8 +1,6 @@
-import imp
-from multiprocessing import context
-from pickle import TRUE
+
 from django.shortcuts import redirect, render
-from requests import request
+
 from orders.models import OrderProduct,Order
 from products.models import Product
 from category.models import Category,SubCategory
@@ -24,7 +22,6 @@ from products.urls import *
 from django.db.models import Sum
 from django.http import JsonResponse
 
-from django.contrib.admin.views.decorators import staff_member_required
 
 
 # Create your views here.
@@ -702,8 +699,8 @@ def variationsshow(request):
 
 
 
-@user_passes_test(lambda u: u in account ,login_url='admin_login')
 
+@user_passes_test(lambda u: u in account ,login_url='admin_login')
 def searchvaraition(request): 
     if 'keyword' in request.GET:
         keyword=request.GET['keyword']
@@ -737,6 +734,7 @@ def edit_variation(request,id):
     except:
         messages.error(request,'are you making some problems')
         return redirect('variationshow')
+
 
 @user_passes_test(lambda u: u in account ,login_url='admin_login')
 def add_variation(request):
@@ -810,8 +808,7 @@ def paymentlist(request):
 def brandshow(request):
     brand=Brand.objects.all()
     if 'keyword' in request.GET:
-        keyword=request.GET['keyword']
-        print('hey')
+        keyword=request.GET['keyword']       
         if keyword:
             brand=Brand.objects.filter(Q(name__icontains=keyword) )     
    
