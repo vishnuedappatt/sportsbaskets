@@ -1,0 +1,310 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Spica Admin</title>
+  <!-- base:css -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'master/vendors/mdi/css/materialdesignicons.min.css' %}">
+  <link rel="stylesheet" href="{% static 'master/vendors/css/vendor.bundle.base.css' %}">
+  <!-- endinject -->
+  <!-- plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="{% static 'master/css/style.css' %}">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="{% static  'master/images/favicon.png' %}" />
+</head>
+<body>
+  <div class="container-scroller d-flex">
+    <!-- partial:../../partials/_sidebar.html -->
+    <nav class="sidebar sidebar-offcanvas bg-dark" id="sidebar">
+      <ul class="nav">
+        <li class="nav-item sidebar-category">  
+          <p>Navigation</p>
+          <span></span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'adminhome' %}">
+            <i class="mdi mdi-view-quilt menu-icon"></i>
+            <span class="menu-title">Dashboard</span>
+            {% comment %} <div class="badge badge-info badge-pill">2</div> {% endcomment %}
+          </a>
+        </li>
+        <li class="nav-item sidebar-category">
+          <p>User Management</p>
+          <span></span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  href="{% url 'customers' %}"  aria-controls="ui-basic">
+            <i class="mdi mdi-palette menu-icon"></i>
+            <span class="menu-title">Users </span>
+        
+          </a>
+          <li class="nav-item sidebar-category">
+            <p>Product Management</p>
+            <span></span>
+          <!-- </li>
+          <div class="collapse" id="ui-basic">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buttons.html">Buttons</a></li>
+              <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/typography.html">Typography</a></li>
+            </ul>
+          </div>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'Categoryshow' %}">
+            <i class="mdi mdi-view-headline menu-icon"></i>
+            <span class="menu-title">Category</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'SubCategoryshow' %}">
+            <i class="mdi mdi-chart-pie menu-icon"></i>
+            <span class="menu-title">SubCategory</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'product_show'  %}">
+            <i class="mdi mdi-grid-large menu-icon"></i>
+            <span class="menu-title">Products</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'variationshow'  %}">
+            <i class="mdi mdi-grid-large menu-icon"></i>
+            <span class="menu-title">Variation Detailes</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'Section_show'  %}">
+            <i class="mdi mdi-grid-large menu-icon"></i>
+            <span class="menu-title">Sections</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'brand'  %}">
+            <i class="mdi mdi-grid-large menu-icon"></i>
+            <span class="menu-title">Brand</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'discount_Show' %}">
+            <i class="mdi mdi-emoticon menu-icon"></i>
+            <span class="menu-title">Discount Detailes</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'OrderProduct_show' %}">
+            <i class="mdi mdi-emoticon menu-icon"></i>
+            <span class="menu-title">Order Details </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'review' %}">
+            <i class="mdi mdi-emoticon menu-icon"></i>
+            <span class="menu-title">Review </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'charts' %}">
+            <i class="mdi mdi-emoticon menu-icon"></i>
+            <span class="menu-title"> chart </span>
+          </a>
+        </li>
+      
+      </ul>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid ">
+      <!-- partial:./partials/_navbar.html -->
+      <nav class="navbar  col-lg-12 col-12 px-0 py-0 py-lg-4 h-10 d-flex flex-row bg-dark">
+        <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-menu"></span>
+          </button>
+          <div class="navbar-brand-wrapper">
+            <a class="navbar-brand brand-logo" href="#"><img style="width: 80px; height: 80px;" src="{% static 'home/images/bg/l1.png' %}" alt="logo"/></a>
+            <a class="navbar-brand brand-logo-mini" href="#"><img src="" alt="logo"/></a>
+          </div>
+          <h4 class="font-weight-bold mb-0 d-none d-md-block mt-1">Welcome back, {{request.user.first_name}} </h4>
+          <ul class="navbar-nav navbar-nav-right">
+            
+            <li class="nav-item dropdown mr-1">
+              <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-toggle="dropdown">
+                {% comment %} <i class="mdi mdi-calendar mx-0"></i>
+                <span class="count bg-info">2</span> {% endcomment %}
+              </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
+                <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                  
+                  </div>
+                  <div class="preview-item-content flex-grow">
+                    <h6 class="preview-subject ellipsis font-weight-normal">David Grey
+                    </h6>
+                 
+                  </div>
+                </a>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                     
+                  </div>
+                  <div class="preview-item-content flex-grow">
+                    <h6 class="preview-subject ellipsis font-weight-normal">Tim Cook
+                    </h6>
+                 
+                  </div>
+                </a>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                      {% comment %} <img src="" alt="image" class="profile-pic"> {% endcomment %}
+                  </div>
+                  <div class="preview-item-content flex-grow">
+                    <h6 class="preview-subject ellipsis font-weight-normal"> Johnson
+                    </h6>
+                    <p class="font-weight-light small-text text-muted mb-0">
+                      Upcoming board meeting
+                    </p>
+                  </div>
+                </a>
+              </div>
+            </li>
+            <li class="nav-item dropdown mr-2">
+              <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-toggle="dropdown">
+                {% comment %} <i class="mdi mdi-email-open mx-0"></i> {% endcomment %}
+              
+              </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+               
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-success">
+                      <i class="mdi mdi-information mx-0"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content">
+                    
+                    <p class="font-weight-light small-text mb-0 text-muted">
+                      Just now
+                    </p>
+                  </div>
+                </a>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-warning">
+                   
+                    </div>
+                  </div>
+                  <div class="preview-item-content">
+                    <h6 class="preview-subject font-weight-normal">Settings</h6>
+                    <p class="font-weight-light small-text mb-0 text-muted">
+                      Private message
+                    </p>
+                  </div>
+                </a>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-info">
+                   
+                    </div>
+                  </div>
+                  <div class="preview-item-content">
+                    <h6 class="preview-subject font-weight-normal">New user registration</h6>
+                    <p class="font-weight-light small-text mb-0 text-muted">
+                
+                    </p>
+                  </div>
+                </a>
+              </div>
+            </li>
+          </ul>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
+        <div class="navbar-menu-wrapper navbar-search-wrapper d-none d-lg-flex align-items-cente bg-dark">
+          <ul class="navbar-nav mr-lg-2">
+             <li class="nav-item nav-search d-none d-lg-block">
+              <h3>SPORTSBASKET.COM</h3>
+            </li> 
+          
+          </ul>
+          <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item nav-profile dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+                <!-- <img src="images/faces/face5.jpg" alt="profile"/>
+                <span class="nav-profile-name">Eleanor Richardson</span> -->
+              </a>
+              <button class="btn btn-danger rounded"><a href="{% url 'adminlogout' %}" style="color: white;text-decoration: none;">LOGOUT</a> </button>
+              <!-- <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+                <a class="dropdown-item">
+                  <i class="mdi mdi-settings text-primary"></i>
+                  Settings
+                </a>
+                <a class="dropdown-item">
+                  <i class="mdi mdi-logout text-primary"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link icon-link">
+                <i class="mdi mdi-plus-circle-outline"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link icon-link">
+                <i class="mdi mdi-web"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link icon-link">
+                <i class="mdi mdi-clock-outline"></i>
+              </a>
+            </li>
+          </ul>
+        </div> -->
+      </nav>
+      {% block content %}
+
+
+
+
+      {% endblock %}
+
+    </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:./partials/_footer.html -->
+          
+    <!-- page-body-wrapper ends -->
+ 
+  <!-- container-scroller -->
+
+  <!-- base:js -->
+  
+  <script src="{% static 'master/vendors/js/vendor.bundle.base.js' %}"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page-->
+  <script src="{% static 'master/vendors/chart.js/Chart.min.js' %}"></script>
+  <!-- End plugin js for this page-->
+  <!-- inject:js -->
+  <script src="{% static 'master/js/off-canvas.js' %}"></script>
+  <script src="{% static 'master/js/hoverable-collapse.js' %}"></script>
+  <script src="{% static 'master/js/template.js' %}"></script>
+  <!-- endinject -->
+  <!-- plugin js for this page -->
+  <!-- End plugin js for this page -->
+  <!-- Custom js for this page-->
+  <script src="{% static 'master/js/dashboard.js' %}"></script>
+  <!-- End custom js for this page-->
+</body>
+
+</html>

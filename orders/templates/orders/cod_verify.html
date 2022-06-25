@@ -1,0 +1,57 @@
+{% extends 'products/base.html' %}
+{%  load static %}
+{% block content  %}
+
+
+
+ <section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class=" d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Checkout</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="single-product.html">Placeorder</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Banner Area -->
+
+
+
+<br>
+<br>
+<br>
+<br>
+
+<!-- start footer Area -->
+        <div class="container  text-center">            
+           <div class="billing_details">
+             
+                                <form action="" method="POST">
+                                    {% csrf_token %}                            
+                                    <div class="input-group mb-3">      
+                                    <input type="text" class="form-control border border-2 border-primary" placeholder="Enter phone number" aria-label="Recipient's username" name="cod_code" aria-describedby="basic-addon2">
+                                         
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-success" type="submit">Confirm Order</button>
+                                    </div>
+
+                                    </div>
+                                    <span style="color: black;">* Verify the order  with Mobile Number for the co</span>
+                                </form>                 
+                                </ul>                          
+                               
+    
+                            </div>
+                          
+                        </div>
+                    </div>
+                 
+                </div>
+            </div>
+  
+
+{% endblock %}

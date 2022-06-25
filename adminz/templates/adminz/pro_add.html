@@ -1,0 +1,99 @@
+
+
+{% extends 'adminz/base.html' %}
+
+
+{% block content %}
+
+<div class="main-panel">        
+    <div class="content-wrapper">
+      <div class="row  d-flex justify-content-center">
+        <div  class="col-md-6 grid-margin stretch-card ml-5 m-5 shadow ">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Add product-form</h4>
+             
+              <form action="" enctype="multipart/form-data" class="forms-sample" method="POST" id="productForm" data-subcategory-url="{% url 'ajax_load_subcategory' %}">
+                {% csrf_token %}
+            
+                <div class="form-group">
+                    <label for="">Category</label>
+                    {{form.category}}
+                </div>
+                <div class="form-group">
+                    <label for="">SubCategory</label>
+                    {{form.Subcategory}}
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputUsername1">name</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" style="border: 1px solid rgb(112, 112, 225);" placeholder="" {{form.name}}
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Slug</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" style="border: 1px solid rgb(112, 112, 225);" placeholder="" {{form.slug}}
+                </div>
+
+               
+                <div class="form-group">
+                  <label for="exampleInputEmail1">price</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" style="border: 1px solid rgb(112, 112, 225);" placeholder="" {{form.price}}
+                </div>
+                <label for="exampleInputEmail1">Sections</label>
+                {{ form.section }}
+                <div class="form-group">
+                  <label for="exampleInputEmail1">stock</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" style="border: 1px solid rgb(112, 112, 225);" placeholder="" {{form.stock}}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Brand</label>
+                    {{ form.brand }}
+
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">description</label>
+                    {{form.description}}
+
+                  </div>
+                  
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Availability</label>
+                    {{form.availability}}
+
+                  </div>
+
+             
+                {{form.image}}
+                {{form.image1}}
+                {{form.image2}}
+                {{form.image3}}
+                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+              
+              </form>
+                        
+            <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+            <script>
+            $("#id_category").change(function () {
+                var url = $("#productForm").attr("data-subcategory-url");  // get the url of the `load_cities` view
+                var categoryId = $(this).val();  // get the selected country ID from the HTML input
+
+                $.ajax({                       // initialize an AJAX request
+                url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+                data: {
+                    'category': categoryId       // add the country id to the GET parameters
+                },
+                success: function (data) {   // `data` is the return of the `load_cities` view function
+                    $("#id_Subcategory").html(data);  // replace the contents of the city input with the data that came from the server
+                }
+                });
+
+            });
+            </script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+  
+{%  endblock %}

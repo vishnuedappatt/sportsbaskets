@@ -19,7 +19,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Karma Shop</title>
+	<title>Sportsbasket</title>
 	<!--
 		CSS
 		============================================= -->
@@ -77,12 +77,15 @@
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">Account</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="login.html">Profile</a></li>
+									{% if user.is_authenticated %}
+									<li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
+									{% else %}
 									<li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Log In</a></li>
 									<li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Sign Up</a></li>
+									{% endif %}
 								</ul>
 							</li>
-							<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+							<li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
 							<li><a href="{% url 'cart' %}">						
 								<button type="button" class="btn btn-primary">
 									<span class="badge bg-danger ms-2">{{ cart_count}}</span>
@@ -101,11 +104,13 @@
 							<li class="nav-item"><a  class="nav-link  fw-3" >
 								<!-- <i class="fa fa-cart-arrow-down  fa-2x" aria-hidden="true"></i></a></li> -->
 								
-							<li class="nav-item"><a class="nav-link" href="contact.html" ><i class="fa fa-heart fa-2x" aria-hidden="true"></i>
+							<li class="nav-item"><a class="nav-link" href="{% url 'wishlist' %}" ><i class="fa fa-heart fa-2x" aria-hidden="true"></i>
 							</a></li>
 														
 						{% if user.is_authenticated %}
-						<li class="nav-item active"><a class="nav-link" href="{%  url 'logout' %}">Log Out</a></li>
+						
+						<li class="nav-item active"><a class="nav-link" href="{%  url 'logout' %}"><li style="color: rgb(129, 129, 222);">{{ request.user.username}}</li>Log Out </a></li>
+						
 						{% else %}
 						<li class="nav-item active"><a class="nav-link" href="{%  url 'login' %}">Log In</a></li>
 						{% endif %}

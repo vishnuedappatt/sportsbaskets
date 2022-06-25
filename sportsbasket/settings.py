@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'category',
     'products',
     'orders',
+    'adminz',
+    
+   
  
     
    
@@ -57,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'sportsbasket.urls'
@@ -72,6 +76,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                #slug linkss
                 'products.context_processors.menu_links',
                 'products.context_processors.submenu_links',
                 'products.context_processors.counter',
@@ -148,7 +153,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST ='smtp.gmail.com'
 EMAIL_PORT= 587
 EMAIL_HOST_USER ='basketsports3@gmail.com'
-EMAIL_HOST_PASSWORD='developer@1'
+EMAIL_HOST_PASSWORD='qnknvpbtzfhxcacb'
 # EMAIL_HOST_USER ='vishnuedappatt@gmail.com'
 # EMAIL_HOST_PASSWORD='Epunhsiv'
 
@@ -168,6 +173,13 @@ MEDIA_URL  = '/media/'
 	
 LOGIN_URL = '/login/'
 
-TWILIO_VERIFY_SERVICE_SID='VA33e6c23e0d5ed06570f0201a28a22307'
-TWILIO_ACCOUNT_SID= 'AC7a43ad30895b765e0ca6680b87f4c2e2'
-TWILIO_AUTH_TOKEN= '23b2699cbc012f71fa0626f5f2c7b3fe'
+TWILIO_VERIFY_SERVICE_SID='VAb077612886620064dc1d255d9734bfb5'
+TWILIO_ACCOUNT_SID= 'AC959461d2f3e75d399fa51896e2d37ea8'
+TWILIO_AUTH_TOKEN= '9469f37f8705029dee83062e66df6e37'
+
+
+GOOGLE_RECAPTCHA_SECRET_KEY = '6LeNJpIgAAAAAMI3ZOUc6Bbn6tIBy-SRjtxYIsYC'
+
+
+RAZORPAY_ID='rzp_test_EsWN1MNLnJr3lq'
+RAZORPAY_KEY='3mB15mFeOmloSZAV5j6UPjtm'

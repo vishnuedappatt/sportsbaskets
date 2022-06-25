@@ -12,7 +12,7 @@
                 <h1>Checkout</h1>
                 <nav class="d-flex align-items-center">
                     <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-                    <a href="single-product.html">Checkout</a>
+                    <a href="single-product.html">PAYMENT ON THE WAY</a>
                 </nav>
             </div>
         </div>
@@ -28,13 +28,13 @@
             <div class="row">
                 <div class="col-lg-5">
                     <h3>Billing Details</h3>
-                    <form class="row contact_form" action="{% url 'place_order' %}" method="POST">
-                        {% csrf_token %}
+                     <!-- <form class="row contact_form" action="{% url 'place_order' %}" method="POST"> 
+                         {% csrf_token %}  -->
                         <div class="card w-100">
                             <h5 class="card-header">Billing Details</h5>
                             <div class="card-body">
                               <h5 class="card-title">Billing Address  </h5>
-                              <p class="card-text mb-0  text-primary fw-2">{{  address.first_name }} {{  address.last_name }}</b></p>                             
+                              <p class="card-text mb-0  text-primary fw-2" >{{  address.first_name }} {{  address.last_name }}</b></p>                             
                                <p class="card-text mb-0">{{  address.address_line_1 }}</p> 
                               <p class="card-text mb-0">{{  address.phone }}</p>                              
                               <p class="card-text mb-0">{{  address.email }}</p>                              
@@ -60,7 +60,8 @@
                             </div>
                           </div>
                         </div>
-                        <div  class="col-lg-7 mt-5"> 
+                        <div  class="col-lg-7 mt-5 "> 
+                           
                             <h4 style="text-align: center;">Order Detailes</h4>
                         <div class="order_box">
                             <h2>Your Order</h2>
@@ -84,16 +85,41 @@
                             
                             </ul> 
                             <ul class="list mt-2 ">
-                                <li><a style="color: black; font-weight: 700;" href="#">Subtotal <span>{{total}}</span></a></li>
-                                <li><a style="color: black; "href="#">Tax <span>{{tax}}</span></a></li>
-                                <li><a style="color:black;font-weight: 800;" href="#">Grand Total <span>{{grand_total}}</span></a></li>
+                                <li><a style="color: black; font-weight: 700;" href="#">Subtotal <span>₹ {{total}}</span></a></li>
+                                <li><a style="color: black; "href="#">Tax <span>₹ {{tax}}</span></a></li>
+                                {% if not discount_available %}
+                                <li><a style="color:black;font-weight: 800;" href="#">Grand Total <span>₹ {{grand_total_without}}</span></a></li>
+                                {% else %}
+                                <li><a style="color:black;font-weight: 800;" href="#">Grand Total <span>₹ {{grand_total}}</span></a></li>
+                                {% endif %}
                             </ul>
                         
-                            <div class="checkout_btn_inner d-flex align-items-center">
-                                <button type="submit" style="margin-left: 30%;" class="btn primary-btn ">Proceed to Paypal</button>
+                            <div class="checkout_btn_inner d-flex align-items-center ml-5">
+                                <a href="{% url 'payments' %}"><button type="submit" style="margin-left: 30%;" class="btn primary-btn ">Proceed to pay</button></a>
+                                <a href="{% url 'cod' %}"><button type="submit" style="margin-left: 30%;" class="btn primary-btn ">Cash On delivary</button></a>
+                               
+                               
                             </div>
+                            <br>
+                            <!-- {% if payment %}
+                            <form action="{% url 'payment_status'  %}" method="POST">
+                                {% csrf_token %}
+                                <script    src="https://checkout.razorpay.com/v1/checkout.js"  
+                                  data-key="rzp_test_EsWN1MNLnJr3lq"  
+                                  data-amount="{{ payment.amount }}" 
+                                  data-currency="{{ payment.currency }}"
+                                  data-order_id="{{ payment.id }}"    
+                                  data-buttontext="Pay with Razorpay"    
+                                  data-name="sportsbasket.com"    
+                                  data-description="100% secured payment interface"    
+                                  data-image="https://example.com/your_logo.jpg"    
+                                  data-prefill.name="{{ payment.name }}"    
+                                  data-prefill.email="gaurav.kumar@example.com"    
+                                  data-theme.color="#F37254">
+                                </script><input type="hidden" custom="Hidden Element" name="hidden"></form>
+                            {% endif %} -->
                         
-                    </form>
+                    <!-- </form> -->
                     </div>
                 </div>
             </div>

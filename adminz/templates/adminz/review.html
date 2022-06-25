@@ -1,0 +1,95 @@
+
+
+{% extends 'adminz/base.html' %}
+
+
+{% block content %}
+
+
+<div class="col-lg-12 grid-margin stretch-card">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Review List</h4>
+      <p class="card-description">
+       
+        <form method="GET" action="">
+          {% csrf_token %}
+          <div class="input-group">
+            <input type="text" class="form-control rounded border-primary" name="keyword" placeholder="Search Here" aria-label="Search" aria-describedby="search-addon" />
+            <button type="submit" class="btn btn-outline-primary">search</button>
+          </div>
+        </form>
+      </p>
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+                        
+          <div class="alert alert-success alert-dismissiblen ">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>{{message}}</strong> 
+          </div>
+        {% endfor %}
+      </ul>
+      {% endif %}
+     
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th style="font-weight: 600;">
+                user
+              </th>
+              <th style="font-weight: 600;">
+                product
+              </th>
+              <th style="font-weight: 600;">
+                image
+              </th>
+              <th style="font-weight: 600;">
+                 description
+              </th>
+              <th style="font-weight: 600;">
+                 delete
+              </th>
+            
+            </tr>
+          </thead>
+          <tbody>
+            <tr>{% for x in review %}
+                <td>
+                    <h5> {{x.user}}</h5>
+                  </td>
+                  <td>
+                    <h5> {{x.product}}</h5>
+                  </td>
+              <td class="py-1">
+                 <img style="width: 75px;height: 75px;" src="{{ x.image.url }}" alt=""/>              
+              </td>
+
+                <td>
+                  <h5> {{x.description}}</h5>
+                </td>
+             
+                
+          
+              
+              <td>
+                <a style="color: red;" onclick="return confirm('are you sure to delete'+''+ '{{x.user}}')" href="{% url 'delete_review' x.id %}"><i class=" mdi mdi-delete " style="font-size: 20px;" aria-hidden="true"></i></a>
+                 
+              </td>
+              
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+{% endblock %}

@@ -21,7 +21,7 @@
   <!-- End Banner Area -->
   <div class="container">
     <div class="row">
-      <div class="col-xl-3 col-lg-4 col-md-5">
+      <!-- <div class="col-xl-3 col-lg-4 col-md-5">
        
         <div class="sidebar-filter mt-50">
           <div class="top-filter-head">Product Filters</div>
@@ -66,16 +66,22 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-xl-9 col-lg-8 col-md-7">
+      </div> -->
+      {% if products %}
+      <div class="col-xl-12 col-lg-12 col-md-7">
         <!-- Start Filter Bar -->
         <div class="filter-bar d-flex flex-wrap align-items-center">
           <div class="sorting">
-            <select>
-              <option value="1">Default sorting</option>
-              <option value="1">Default sorting</option>
-              <option value="1">Default sorting</option>
+            <form action="" method="POST">
+              {% csrf_token %}
+              <select name="sorting">
+                <option value=""> Pricing sort </option>
+                <option   value="high">low to high </option>
+                <option value="low">high to low </option>       
+                
             </select>
+            <button class="sorting " style="width: 80px;" type="submit">filter</button>         
+          </form>
           </div>
           <div class="sorting mr-auto">
             <select>
@@ -120,8 +126,8 @@
         
           <div class="row">{% for pro in products %}
             <!-- single product -->
-            <div class="col-lg-4 col-md-6 mt-5 border-primary">
-              <div class="single-product  border  border-primary">
+            <div class="col-lg-3 col-md-6 mt-5 border-primary ">
+              <div class="single-product  border  border-primary shadow">
                 <h4 style="text-align: center; color: blue; background-color: rgba(95, 158, 160, 0.375);">TOP</h4>
                 <img class="img-fluid" src="{{pro.image.url}}" alt="">
                 <div class="product-details">
@@ -297,6 +303,13 @@
             </div>
           </div>
         </section>
+{% else %}
 
+<div >
+  <img style="width: 800px;height: 800px;" src="https://static.vecteezy.com/system/resources/previews/004/968/529/non_2x/search-no-results-found-concept-illustration-flat-design-eps10-simple-modern-graphic-element-for-landing-page-empty-state-ui-infographic-icon-with-editable-stroke-line-outline-linear-vector.jpg" alt="">
+</div>
+
+
+{% endif %}
 
  {% endblock  %}

@@ -10,35 +10,43 @@
         <div class="col-first">
           <!-- <h1>Shop Category page</h1> -->
           <nav class="d-flex align-items-center">
-            <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+            <a href="index.html">ghv hnjgvb jhnbvhmjb<span class="lnr lnr-arrow-right "></span></a>
             <a href="#">Shop<span class="lnr lnr-arrow-right"></span></a>
             <a href="category.html">Fashon Category</a>
           </nav>
         </div>
       </div>
     </div>
+    <div class="text-center mt-0">
+   <h1>{{categor}}</h1>
+   <div class="container">
+    <div class="sidebar-categories">
+      <div class="head">Browse Categories</div>
+      <ul class="main-categories">  
+        <li class="main-nav-list"><a data-toggle="collapse" href="#fruitsVegetable" aria-expanded="false" aria-controls="fruitsVegetable"><span
+            class="lnr lnr-arrow-right"></span><strong>{{categor}} </strong><span class="number"></span></a>
+          <ul class="collapse" id="fruitsVegetable" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
+            {% for  subcat in sublinks %} {% if subcat.category == categor %}
+            <li class="main-nav-list child"><a href="{{ subcat.get_url }}">{{subcat.name}} <span class="number"></span></a></li>
+    
+            {% endif %}
+            {% endfor %}
+    
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+    </div>
+   </div>
+   
+    
   </section>
   <!-- End Banner Area -->
   <div class="container">
     <div class="row">
       <div class="col-xl-3 col-lg-4 col-md-5">
-        <div class="sidebar-categories">
-          <div class="head">Browse Categories</div>
-          <ul class="main-categories">  
-            <li class="main-nav-list"><a data-toggle="collapse" href="#fruitsVegetable" aria-expanded="false" aria-controls="fruitsVegetable"><span
-                class="lnr lnr-arrow-right"></span><strong>{{categor}}</strong><span class="number"></span></a>
-              <ul class="collapse" id="fruitsVegetable" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
-                {% for  subcat in sublinks %} {% if subcat.category == categor %}
-                <li class="main-nav-list child"><a href="{{ subcat.get_url }}">{{subcat.name}} <span class="number"></span></a></li>
-         
-                {% endif %}
-                {% endfor %}
-        
-              </ul>
-            </li>
-
-          </ul>
-        </div>
+<!--         
         <div class="sidebar-filter mt-50">
           <div class="top-filter-head">Product Filters</div>
           <div class="common-filter">
@@ -80,18 +88,23 @@
                 <div id="upper-value"></div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
-      <div class="col-xl-9 col-lg-8 col-md-7">
+      <div class="col-xl-12 col-lg-12 col-md-7">
         <!-- Start Filter Bar -->
         <div class="filter-bar d-flex flex-wrap align-items-center">
           <div class="sorting">
-            <select>
-              <option value="1">Default sorting</option>
-              <option value="1">Default sorting</option>
-              <option value="1">Default sorting</option>
+            <form action="" method="POST">
+              {% csrf_token %}
+              <select name="sorting">
+                <option value=""> Pricing sort </option>
+                <option   value="high">low to high </option>
+                <option value="low">high to low </option>       
+                
             </select>
+            <button class="sorting " style="width: 80px;" type="submit">filter</button>         
+          </form>
           </div>
           <div class="sorting mr-auto">
             <select>
@@ -136,7 +149,7 @@
         
           <div class="row">{% for pro in products %}
             <!-- single product -->
-            <div class="col-lg-4 col-md-6 mt-5 border-primary">
+            <div class="col-lg-3 col-md-6 mt-5 border-primary">
               <div class="single-product  border  border-primary">
                 <h4 style="text-align: center; color: blue; background-color: rgba(95, 158, 160, 0.375);">TOP</h4>
                 <img class="img-fluid" src="{{pro.image.url}}" alt="">

@@ -7,20 +7,37 @@
             <div class="col-first">
                 <h1>Shopping Cart</h1>
                 <nav class="d-flex align-items-center">
-                    <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-                    <a href="category.html">Cart</a>
+                    <a href="">Home<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="">Cart</a>
                 </nav>
             </div>
         </div>
     </div>
 </section>
 <!-- End Banner Area -->
-
+{% if messages %}
+<ul class="messages">
+  {% for message in messages %}
+                  
+    <div class="alert alert-success alert-dismissiblen ">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong>{{message}}</strong> 
+    </div>
+  {% endfor %}
+</ul>
+{% endif %}
 <!--================Cart Area =================-->
 {% if  not  cart_items %}
 
-<h1 style="text-align: center;margin-top: 200px;">Your cart is Empty </h1>
-<h3 style="text-align: center; margin-top: 50px; margin-bottom: 200px;" ><button style="align-items: center;" class="btn btn-primary btn-lg"><a style="text-decoration: none; color:white;" href="{% url 'home' %}">CONTINUE SHOPPING</a> </button></h3>
+<div style="margin-top: 50px" class="container ">
+    <div class="text-align text-center">
+      <h2>-----    No cart items   -----</h2>
+      <h4>please shop Now</h4>
+      <img style="margin-top: 50px;" src="https://shop.du.ae/_ui/responsive/common/images/Truck.svg" alt="">
+    </div>
+    <h3 style="text-align: center; margin-top: 50px; margin-bottom: 200px;" ><button style="align-items: center;" class="btn btn-primary btn-lg"><a style="text-decoration: none; color:white;" href="{% url 'home' %}">CONTINUE SHOPPING</a> </button></h3>
+    </div>
+
 {% else %}
 <section class="cart_area">
     <div class="container">
@@ -43,20 +60,19 @@
                                 <div class="media">
                                     <div class="d-flex">
                                         <img style="width: 100px; height:100px;" src="{{ x.product.image.url}}" alt="">
-                                    </div>
+                                    </div>                                
                                     <div class="media-body">
                                       <a href="{{ x.product.get_url }}"> <p style="color: black; font-size: large;">{{ x.product.name}}</p></a>
-                                      {% if x.variations.all %}
+                                      {% if x.variations.all %}                                      
                                          {% for item in x.variations.all %}
                                          <p>{{ item.variation_category }} :{{ item.variation_value }}</p> 
                                         {%endfor%}
-                                      {% endif %}
-                                      
+                                      {% endif %}                                      
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                <h5>${{ x.product.price}}</h5>
+                                <h5>₹{{ x.product.price}}</h5>
                             </td>
                             <td>
                                 <div class="product_count">                                
@@ -75,7 +91,7 @@
                                 </div>
                             </td>
                             <td>
-                                <h5>${{ x.sub_total }}</h5>
+                                <h5>₹ {{ x.sub_total }}</h5>
                             </td>
                             <td>
                                <a href="{% url 'remove_cartitem' x.product.id  x.id %}"><button onclick="return confirm('Are you sure want to delete the item'+'?');" class="btn btn-danger">Remove</button></a>
@@ -93,7 +109,7 @@
                                 <h5>Total</h5>
                             </td>
                             <td>
-                                <strong><h4>$ {{total}}</h4></strong>
+                                <strong><h4>₹ {{total}}</h4></strong>
                             </td>
                         </tr>
                         <tr class="shipping_area">
@@ -102,11 +118,11 @@
 
                             </td>
                             <td>
-                                <h5>Shipping</h5>
+                                <h5>Tax</h5>
                                
                             </td>
                             <td>                              
-                                        <li style="text-decoration: None;"><a href="#">${{ tax }}</a></li>                                  
+                                        <li style="text-decoration: None;"><a href="#">₹ {{ tax }}</a></li>                                  
                                     
                                     </ul>
                               
@@ -122,7 +138,7 @@
                                 <h5>Grand Total</h5>
                             </td>
                             <td>
-                                <strong><h3>$ {{grand_total}}</h></strong>
+                                <strong><h3>₹ {{grand_total}}</h></strong>
                             </td>
                         </tr>
                         <tr class="out_button_area">
@@ -187,9 +203,6 @@
                                         type="text">
                                 </div>
 
-                                <!-- <div class="col-lg-4 col-md-4">
-                                                <button class="bb-btn btn"><span class="lnr lnr-arrow-right"></span></button>
-                                            </div>  -->
                             </div>
                             <div class="info"></div>
                         </form>
@@ -225,9 +238,9 @@
             </div>
         </div>
         <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
-            <p class="footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            <p class="footer-text m-0">
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+
 </p>
         </div>
     </div>

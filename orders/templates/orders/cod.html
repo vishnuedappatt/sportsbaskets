@@ -1,0 +1,92 @@
+{% extends 'products/base.html' %}
+{%  load static %}
+{% block content  %}
+
+
+
+ <section class="banner-area organic-breadcrumb">
+    <div class="container">
+        <div class=" d-flex flex-wrap align-items-center justify-content-end">
+            <div class="col-first">
+                <h1>Checkout</h1>
+                <nav class="d-flex align-items-center">
+                    <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="single-product.html">Placeorder</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Banner Area -->
+
+
+
+<br>
+<br>
+<br>
+<br>
+
+<!-- start footer Area -->
+        <div class="container  text-center">            
+           <div class="billing_details">
+                <div  class="row ">
+                    
+                    <div style="background-color:rgba(214, 221, 227, 0.127) ;margin-left: 18%;" class="col-lg-6 border      ">
+                                    <h3>Billing Details</h3>                    
+                                    {% if messages %}
+                                    <ul class="messages">
+                                      {% for message in messages %}
+                                                      
+                                        <div class="alert alert-success alert-dismissiblen ">
+                                          <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                          <strong>{{message}}</strong> 
+                                        </div>
+                                      {% endfor %}
+                                    </ul>
+                                    {% endif %}
+                                <ul class="list mt-2 ">
+                                    <li><a style="color: black; font-weight: 700;" href="#">Subtotal <span>₹ {{total}}</span></a></li>
+                                    <li><a style="color: black; "href="#">Tax <span>₹ {{tax}}</span></a></li>                             
+                                   
+                                   
+                                    <li><a style="color:black;font-weight: 800;" href="#">Grand Total <span>₹ {{grand_total}}</span></a></li>
+                                <div class="form-check" requied>
+                                    <label class="form-check-label">
+                                        
+                                      
+                                        <br>
+                                    </label>
+                                    </div>
+                                <form action="" method="POST">
+                                    {% csrf_token %}                            
+                                    <div class="input-group mb-3">      
+                                    <input type="text" class="form-control border border-2 border-primary" placeholder="Enter phone number" aria-label="Recipient's username" name="mobile" aria-describedby="basic-addon2">
+                                         
+                                    <div class="input-group-append">
+                                      
+                                        <button class="btn btn-outline-success" type="submit">GET OTP</button>
+                                     
+                                    </div>
+                                    
+
+                                    </div>
+                                    <input type="checkbox" class="form-check-input" value="" required>Accept the terms & Conditions of SPORTSBASKET <br> 
+                                    <input type="checkbox" class="form-check-input" value="" required>I agree to the <a href="https://razorpay.com/terms/">terms & conditions</a> and <a href="https://razorpay.com/privacy/">Privacy Policy</a> of RAZORPAY <br><br>
+                                    <script src='https://www.google.com/recaptcha/api.js'></script>
+                                    <div class="g-recaptcha" data-sitekey="6LeNJpIgAAAAAGcT9JYhA4Ta34HVudPRwqWrMx6J"></div>
+
+                                    <span style="color: black;">* Verify the order  with Mobile Number for the completetion of  order</span>
+                                </form>                 
+                                </ul>                          
+                               
+    
+                            </div>
+                          
+                        </div>
+                    </div>
+                 
+                </div>
+            </div>
+  
+
+{% endblock %}

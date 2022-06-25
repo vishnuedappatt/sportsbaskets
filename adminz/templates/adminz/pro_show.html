@@ -1,0 +1,108 @@
+
+
+{% extends 'adminz/base.html' %}
+
+
+{% block content %}
+
+
+<div class="col-md-12 stretch-card">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Product List</h4>
+      <p class="card-description">
+        <button class="btn btn-rounded btn-warning"><a href="{% url 'addproduct' %}">ADD</a></button>
+        <form method="GET" action="{% url 'productsearch' %}">
+          {% csrf_token %}
+          <div class="input-group"> 
+            <input type="text" class="form-control rounded border-primary" name="keyword" placeholder="Search Here" aria-label="Search" aria-describedby="search-addon" />
+            <button type="submit" class="btn btn-outline-primary">search</button>
+          </div>
+        </form>
+      </p>
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+                        
+          <div class="alert alert-success alert-dismissiblen ">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>{{message}}</strong> 
+          </div>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <table class="table">
+        <thead>
+          <th>image</th>
+          <th>Category</th>
+          <th>Subcategory</th>
+          <th>name</th>
+          <th>price</th>
+          <th>Stock</th>
+          <th>Section</th>
+          <th>Availability</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        
+        </thead>
+        <tbody>
+          <tr class="table-active">
+            {% for x in products %}
+            <td>
+              <img style="width: 50px;height: 50px;" src="{{ x.image.url }}" alt=""/> 
+            </td>
+            <td>
+              {{x.category}}
+            </td>
+            <td>
+              {{x.Subcategory}}
+            </td>
+            <td>
+              {{x.name}}
+            </td>
+            <td>
+              {{x.price}}
+            </td>
+            
+            <td>
+              {{x.stock}}
+            </td>
+            <td>
+              {{x.section}}
+            </td>
+           
+              
+              <td>
+                {%  if x.availability %}
+                <div style="color:green" class=" mdi mdi-checkbox-multiple-marked-circle-outline"></div>
+                {% else %}
+                <div style="color: red;" class="  mdi mdi-window-close "></div>
+                {% endif %}
+                
+              </td>          
+           
+            <td>
+              <a style="color:green;" href="{% url 'edit_product' x.slug %}"><i class=" mdi mdi-lead-pencil "  aria-hidden="true"></i> </a>
+              
+        
+            </td>
+            <td>
+              <a style="color: red;" onclick="return confirm('are you sure to delete'+''+ '{{x.name}}')" href="{% url 'delete_pro' x.slug %}"><i class=" mdi mdi-delete " aria-hidden="true"></i></a>
+               
+            </td>
+            
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,128 @@
+{%  extends 'adminz/base.html' %}
+
+{% block content %}
+
+
+           
+            <div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">All Transations</h4>
+                  <p class="card-description">
+                      <code></code>
+                      <form method="GET" action="{% url 'searchorderproduct' %}">
+                        {% csrf_token %}
+                        <div class="input-group">
+                          <input type="text" class="form-control rounded border-primary" name="keyword" placeholder="Search Here" aria-label="Search" aria-describedby="search-addon" />
+                          <button type="submit" class="btn btn-outline-primary">search</button>
+                        </div>
+                      </form>
+                  {% if messages %}
+                  <ul class="messages">
+                    {% for message in messages %}
+                                    
+                      <div class="alert alert-success alert-dismissiblen ">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>{{message}}</strong> 
+                      </div>
+                    {% endfor %}
+                  </ul>
+                  {% endif %}
+               
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th style="font-weight: 600;">
+                            User
+                          </th>
+                          <th style="font-weight: 600;">
+                            Payment Id
+                          </th>
+                          <th style="font-weight: 600;">
+                            order Id
+                          </th>
+                          <th style="font-weight: 600;">
+                            product
+                          </th>
+                          <th style="font-weight: 600;">
+                            Quantity
+                          </th>
+                          <th style="font-weight: 600;">
+                            Price
+                          </th>
+                          <th style="font-weight: 600;">
+                            ordered
+                          </th>
+                          <th style="font-weight: 600;">
+                            MEthod
+                          </th>
+                          <th style="font-weight: 600;">
+                            Created
+                          </th>
+                          <th style="font-weight: 600;">
+                            status
+                          </th>
+                          <th style="font-weight: 600;">
+                            Status edit
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>{% for x in order %}
+                          <td style="font-size: 15px;">
+                         
+                            {{ x.user}}
+                          </td>
+                          <td style="font-size: 15px;">
+                            {{ x.payment }} 
+                          </td>
+                          <td style="font-size: 15px;">
+                            {{ x.order }} 
+                          </td>
+              
+                          <td style="font-size: 15px;">
+                            {{ x.product }} 
+                          </td>
+                          <td style="font-size: 15px;">
+                            {{ x.quantity }} 
+                          </td>
+                           
+                          <td >
+                           
+                            ₹ {{ x.product_price}}
+                          </td>
+                          <td style="font-size: 15px;">
+                            {% if x.ordered %}
+                             completed
+                             {% else %}
+                             Failed
+                             {% endif %}                         
+                          </td >
+                          <td style="font-size: 15px;">
+                           {{x.method}}
+                          </td>
+                          <td style="font-size: 15px;">
+                           {{x.created_at}}
+                          </td>
+                          <td style="font-size: 15px;">
+                           {{x.order.status}}
+                          </td>
+                          <td>
+                          <a href="{% url 'editstatus' x.order.id %}">Edit</a>
+                          </td>
+                        </tr>
+                        {% endfor %}                       
+                       
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+
+
+
+
+ {% endblock %} 

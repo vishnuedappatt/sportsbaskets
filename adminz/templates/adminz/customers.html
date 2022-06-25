@@ -1,0 +1,102 @@
+
+
+
+
+{% extends 'adminz/base.html' %}
+
+
+{% block content %}
+
+<div class="col-lg-12 col-md- grid-margin stretch-card">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">User List</h4>
+      <p class="card-description">
+          <code></code>
+          <form method="GET" action="{% url 'customersearch' %}">
+            {% csrf_token %}
+            <div class="input-group">
+              <input type="text" class="form-control rounded border-primary" name="keyword" placeholder="Search Here" aria-label="Search" aria-describedby="search-addon" />
+              <button type="submit" class="btn btn-outline-primary">search</button>
+            </div>
+          </form>
+      </p>
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+                        
+          <div class="alert alert-success alert-dismissiblen ">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>{{message}}</strong> 
+          </div>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th style="font-weight: 600;">
+                User
+              </th>
+              <th style="font-weight: 600;">
+                email
+              </th>
+              <th style="font-weight: 600;">
+                phone Number
+              </th>
+              <th style="font-weight: 600;">
+                Last Join
+              </th>
+              <th style="font-weight: 600;">
+                Created 
+              </th>
+              <th style="font-weight: 600;">
+                Status 
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>{% for x in account %}
+              <td style="font-size: 20px;">
+                 <img src="https://ps.w.org/simple-user-avatar/assets/icon-256x256.png?rev=2413146" alt=""/> 
+                {{ x.first_name}} &nbsp; {{x.last_name}}
+              </td>
+              <td  style="font-size: 16px" >
+                {{ x.email }} 
+              </td>
+              <td  style="font-size: 20px;">
+                <!-- <div class="progress">
+                  <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div> -->
+                  {{ x.phone_number}}
+              </td>
+              <td style="font-size: 16px;">
+                 {{ x.last_login}}
+             
+              </td>
+              <td  style="font-size: 16px;">
+               {{x.date_jointed.date}}
+              </td>
+              <td >
+
+                {% if x.is_active %}
+                <button class="badge badge-success" style="width: 100%;"><a style="text-decoration: none; color: rgb(13, 5, 5);" href="{% url 'customersUnBlock' x.id %}">Active</a> </button>
+             
+               {% else%}
+               
+               <button class="badge badge-danger" style="width: 100%;"><a style="text-decoration: none; color: white;" href="{% url 'customersUnBlock' x.id %}">Blocked</a> </button>
+               {%endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

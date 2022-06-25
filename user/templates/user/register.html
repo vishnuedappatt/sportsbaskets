@@ -1,295 +1,177 @@
+{% extends  'products/base.html' %}
+{% block content %}
 
 {% load static %}
 
-<!DOCTYPE HTML>
-<html>
-	<head>
-	<title>Footwear - Free Bootstrap 4 Template by Colorlib</title>
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- <link rel="stylesheet" href="{% static 'user/css/st.css'  %"> -->
-	<!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet"> -->
-	<link href="https://fonts.googleapis.com/css?family=Rokkitt:100,300,400,700" rel="stylesheet">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	
-	<!-- Animate.css -->
-		<link rel="stylesheet" href="{% static 'user/css/animate.css' %}">
-	<!-- Icomoon Icon Fonts-->
-		<link rel="stylesheet" href="{% static 'user/css/icomoon.css' %}">
-	<!-- Ion Icon Fonts-->
-		<link rel="stylesheet" href="{% static 'user/css/ionicons.min.css' %}">
-	<!-- Bootstrap  -->
-		<link rel="stylesheet" href="{% static 'user/css/bootstrap.min.css' %}">
-
-	<!-- Magnific Popup -->
-		<link rel="stylesheet" href="{% static 'user/css/magnific-popup.css' %}">
-
-	<!-- Flexslider  -->
-		<link rel="stylesheet" href="{% static 'user/css/flexslider.css' %}">
-
-	<!-- Owl Carousel -->
-		<link rel="stylesheet" href="{% static 'user/css/owl.carousel.min.css' %}">
-		<link rel="stylesheet" href="{% static 'user/css/owl.theme.default.min.css' %}">
-	
-	<!-- Date Picker -->
-		<link rel="stylesheet" href="{% static 'user/css/bootstrap-datepicker.css' %}">
-	<!-- Flaticons  -->
-		<link rel="stylesheet" href="{% static 'user/fonts/flaticon/font/flaticon.css' %}">
-
-	<!-- Theme style  -->
-		<link rel="stylesheet" href="{% static 'user/css/style.css' %}">
-		<link rel="stylesheet" href="{% static 'user/css/stle.css' %}">
-		<link rel="stylesheet" href="{% static 'login/css/style.css' %}">
 
 
-	</head>
-	<body style="background-color: rgb(234, 219, 219);">
+<section class="login_box_area section_gap mt-5">
+	<div class="container">
+		<div class="row">
+			{% if form.email.errors %} 
+					<div class="col-lg-12 ">
 		
-	<div class="colorlib-loader"></div>
-
-	<div id="page">
-		<nav class="colorlib-nav bg-light"  role="navigation">
-			<div class="top-menu">
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-7 col-md-9">
-							<img style="width: 130px; height: 130px; margin-top: -50px;" src="{% static 'home/images/bg/l1.png'  %}" alt="">
-							<div id="colorlib-logo"><a href="index.html" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">SportsBasket.com</a></div>
-							
-						</div>
-						<div class="col-sm-5 col-md-3">
-			            <form action="#" class="search-wrap">
-			               <div class="form-group">
-			                  <input type="search" class="form-control search" placeholder="Search">
-			                  <button class="btn btn-primary submit-search text-center" type="submit"><i class="icon-search"></i></button>
-			               </div>
-			            </form>
-			         </div>
-		         </div>
-					<div class="row">
-						<div class="col-sm-12 text-left menu-1">
-							<ul>
-								<li class=""><a style="color: black; " href="{% url 'home' %}">Home</a></li>
-								<li class="has-dropdown active">
-									<a href="men.html">Men</a>
-									<ul class="dropdown">
-										<li><a href="product-detail.html"> FOOTBALL</a></li>
-										<li><a href="cart.html">CRICKET </a></li>
-										<li><a href="checkout.html">VOLLEYBALL</a></li>
-										<li><a href="order-complete.html"> BASCKETBALL</a></li>
-										<li><a href="add-to-wishlist.html">BASEBALL</a></li>
-										<li><a href="order-complete.html"> BADMINDON</a></li>
-										<li><a href="add-to-wishlist.html">TENNIES</a></li>
-										<li><a href="add-to-wishlist.html">HOCKEY</a></li>
-									</ul>
-								</li>
-								<li class="dropdown">
-									<button class="btn btn-primary dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									  Category 
-									</button>
-									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">{% for categories in categories %}
-									  <a style="font-family: Arial, Helvetica, sans-serif;" class="dropdown-item" href="{% url 'login' %}">{{categories.title}}</a>
-									  <!-- <a style="font-family: Arial, Helvetica, sans-serif;" class="dropdown-item" href="{% url 'register' %}">CRICKET</a>
-									  <a style="font-family: Arial, Helvetica, sans-serif;" class="dropdown-item" href="{% url 'login' %}">VOLLEYBALL</a>
-									  <a style="font-family: Arial, Helvetica, sans-serif;" class="dropdown-item" href="{% url 'register' %}">BASEBALL</a>
-									  <a style="font-family: Arial, Helvetica, sans-serif;" class="dropdown-item" href="{% url 'login' %}">BASCKETBALL</a>
-									  <a style="font-family: Arial, Helvetica, sans-serif;" class="dropdown-item" href="{% url 'register' %}">BADMINDON</a>
-									  <a style="font-family: Arial, Helvetica, sans-serif;" class="dropdown-item" href="{% url 'login' %}">TENNIES</a>
-									  <a style="font-family: Arial, Helvetica, sans-serif;" class="dropdown-item" href="{% url 'register' %}">HOCKEY</a>
-									 -->{% endfor %}
-									</div>
-								</li>		
-								
-								<li class="dropdown">
-									<button class="btn btn-sucess dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									  Account 
-									</button>
-									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									  <a style="font-family: Arial, Helvetica, sans-serif;" class="dropdown-item" href="{% url 'login' %}">Login</a>
-									  <a style="font-family: Arial, Helvetica, sans-serif;" class="dropdown-item" href="{% url 'register' %}">Sign Up</a>
-									
-									</div>
-								</li>														
-								<li><a href="about.html">Profile</a></li>
-								<li><a href="contact.html">Contact</a></li>
-								{% if user.is_authenticated  %}
-								<li  class="cart me-3 ms-4 ms-auto me-auto"><a href="{%   url 'logout' %}"><i class="fa fa-sign-out fa-2x"  aria-hidden="true"><h5 >Log Out</h5></i></li>
-									{% else %}
-								<li  class="cart me-3 ms-4 ms-auto me-auto"><a href="{%  url 'login'   %}"><i class="fa fa-sign-in fa-2x " aria-hidden="true"><h5 >Log In</h5></i></li>
-									{% endif %}
-									
-
-								<li class="cart me-3 ms-4 ms-auto me-auto"><a href="cart.html"><i class="fa fa-cart-arrow-down fa-2x" aria-hidden="true"><h5> Cart</h5></i></li>
-								<li  class="cart me-3 ms-4 ms-auto me-auto"><a href="cart.html"><i  class="fa fa-heart fa-2x " aria-hidden="true"><h5>Wishlist</h5></i></li>
-						
-									
-							</ul>
-						</div>
+						<div class="alert alert-danger alert-dismissible fade show" role="alert">
+						  
+							{% for field in form %}  {% for error in field.errors %}
+						  {{ error }}
+							{% endfor %}  {% endfor %}
+						  
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							  <span aria-hidden="true">&times;</span>
+							</button>
+						  </div>
+					</div> {% endif %}   
+		
+					{% if form.non_field_errors %} 
+					<div class="col-lg-12 ">
+		
+						<div class="alert alert-danger alert-dismissible fade show" role="alert">
+						  
+						  {% for err in form.non_field_errors %}
+						  {{ err }}
+							{% endfor %} 
+						  
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							  <span aria-hidden="true">&times;</span>
+							</button>
+						  </div>
+					</div> {% endif %}
+			<div class="col-lg-6">
+				<div class="login_box_img">
+					<img class="img-fluid" src="{% static 'home/images/bg/lgg.jpg'  %}" alt="">
+					<div class="hover">
+						<!-- <h4>SPORTSBASKET.COM</h4>
+						<p>There are advances being made in science and technology everyday, and a good example of this is the</p> -->
+						<a class="primary-btn" href="{% url 'login' %}"> Login </a>
 					</div>
 				</div>
 			</div>
-			<div class="sale bg-dark">
-				<div class="container ">
-					<div class="row ">
-						<div class="col-sm-8 offset-sm-2 text-center">
-							<div class="row">
-								<div class="owl-carousel2">
-									<div class="item">
-										<div class="col">
-											<h3><a href="#">You Are my Assets</a></h3>
-										</div>
+		
+			<div class="col-lg-6">
+			
+				<div class="login_form_inner">
+					<h3>  Register Now </h3>
+					
+					<form class="row login_form" action="" method="POST" id="registerform" novalidate="novalidate">
+						{% csrf_token %}
+					
+						<div class="col-md-12 form-group">
+							{% comment %} {% if messages %}
+							<ul class="messages">
+								{% for message in messages %}
+																
+									<div class="alert alert-success alert-dismissiblen ">
+										<button type="button" class="close" data-dismiss="alert">&times;</button>
+										<strong>{{message}}</strong> 
 									</div>
-									<div class="item">
-										<div class="col">
-											<h3><a href="#">Stay Healthy</a></h3>
-										</div>
+								{% endfor %}
+							</ul>
+							{% endif %}
+		 {% endcomment %}
+							<!-- <input type="text" class="form-control" id="email" name="email" placeholder="Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
+						</div>
+						<div class="col-md-12 form-group">
+							<input type="Password" class="form-control" id="Password" name="Password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+						</div>
+					 -->
+								<div class="form-group">
+									<div class="form-wrapper">
+										<!-- <label for="">First Name</label> -->
+										{{form.first_name}}
 									</div>
-									<div class="item">
-										<div class="col">
-											<h3><a href="#">play well</a></h3>
-										</div>
+									<div class="form-wrapper">
+										<!-- <label for="">Last Name</label> -->
+										{{form.last_name}}
 									</div>
 								</div>
-							</div>
+								<div class="form-wrapper">
+									<!-- <label for="">Email</label> -->
+									{{form.email.error}}
+									{{form.email}}
+								</div>
+								<div class="form-wrapper">
+									<!-- <label for="">Mobile Number</label> -->
+									{{form.phone_number}}
+								</div>
+								<div class="form-wrapper">
+									<!-- <label for="">Password</label> -->
+									{{form.password}}
+								</div>
+								<div class="form-wrapper">
+									<!-- <label for="">Confirm Password</label> -->
+									{{form.confirm_password}}
+				
+				<!-- <button class="btn bg-danger" type="submit">Register Now</button>
+				<br> -->{{form.error}}
+						<div class="col-md-12 form-group">
+							<button type="submit" value="submit" class="primary-btn">Register Now</button>
+							<a href="{% url 'forgot_password' %}">Forgot Password?</a>
 						</div>
+						<a href="{% url 'home' %}">Back to Home</a>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</section>
+
+<footer class="footer-area section_gap">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4  col-md-6 col-sm-6">
+				<div class="single-footer-widget">
+					
+					<a href="{%  url 'contact' %}"><h6>About Us</h6></a>
+					<p>
+						its not a store its a world of sports 
+						
+					</p>
+					<p>explore more</p>
+
+					<a href="{% url 'home' %}">click Here</a>
+				</div>
+			</div>
+			<div class="col-lg-4  col-md-6 col-sm-6">
+				<div class="single-footer-widget">
+					<h6>Social Media</h6>
+					<p>Facebook</p>
+					<p>Instagram</p>
+					<p>Email</p>
+					<p>Twitter</p>
+				
+					<div class="" id="mc_embed_signup">
+
+						<form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+						 method="get" class="form-inline">
+					
+							<div class="info"></div>
+						</form>
 					</div>
 				</div>
 			</div>
-		</nav>
-		
-<div  class="wrapper" style="background-image: url('/static/login/images/bg-registration-form-2.jpg');">
-	<div class="inner">
-		
-{% if messege in messeges %}
-	
-{% for message in messages %}
-
-<div class="alert alert-success alert-dismissible">
-	<button type="button" class="close" data-dismiss="alert">&times;</button>
-	<strong>{{message}}</strong> 
-  </div>
-  {% endfor %}
-{% endif %}
-				<form style="align-items: center;" action="" method="POST">
-					{% csrf_token %}
-					<h3>Registration Form</h3>
-					<div class="form-group">
-						<div class="form-wrapper">
-							<!-- <label for="">First Name</label> -->
-							{{form.first_name}}
-						</div>
-						<div class="form-wrapper">
-							<!-- <label for="">Last Name</label> -->
-							{{form.last_name}}
-						</div>
+			
+			<div class="col-lg-4 col-md-6 col-sm-6">
+				<div class="single-footer-widget">
+					<h6>Follow Us</h6>
+					<p>Let us be social</p>
+					<div class="footer-social d-flex align-items-center">
+						<a href="#"><i class="fa fa-facebook"></i></a>
+						<a href="#"><i class="fa fa-twitter"></i></a>
+						<a href="#"><i class="fa fa-dribbble"></i></a>
+						<a href="#"><i class="fa fa-behance"></i></a>
 					</div>
-					<div class="form-wrapper">
-						<!-- <label for="">Email</label> -->
-						{{form.email}}
-					</div>
-					<div class="form-wrapper">
-						<!-- <label for="">Mobile Number</label> -->
-						{{form.phone_number}}
-					</div>
-					<div class="form-wrapper">
-						<!-- <label for="">Password</label> -->
-						{{form.password}}
-					</div>
-					<div class="form-wrapper">
-						<!-- <label for="">Confirm Password</label> -->
-						{{form.confirm_password}}
-				
-				<button class="btn bg-danger" type="submit">Register Now</button>
-				<br>
-
-				Already Have Account? <strong><a style="color: black; font-size: 16px;" href="{% url 'login' %}">Login</a></strong><h4><a href="{% url 'home' %}">Back to home</a></h4>
-				<br>
-				
-				
+				</div>
 			</div>
 		</div>
-	</form>
-	
-	
-<footer class="bg-dark" id="colorlib-footer" role="contentinfo">
-    <div class="container">
-        <div class="row row-pb-md">
-            <div class="col footer-col colorlib-widget">
-                <h4>About Footwear</h4>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life</p>
-                <p>
-                    <ul class="colorlib-social-icons">
-                        <li><a href="#"><i class="icon-twitter"></i></a></li>
-                        <li><a href="#"><i class="icon-facebook"></i></a></li>
-                        <li><a href="#"><i class="icon-linkedin"></i></a></li>
-                        <li><a href="#"><i class="icon-dribbble"></i></a></li>
-                    </ul>
-                </p>
-            </div>
-            <div class="col footer-col colorlib-widget">
-                <h4>Customer Care</h4>
-                <p>
-                    <ul class="colorlib-footer-links">
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Returns/Exchange</a></li>
-                        <li><a href="#">Gift Voucher</a></li>
-                        <li><a href="#">Wishlist</a></li>
-                        <li><a href="#">Special</a></li>
-                        <li><a href="#">Customer Services</a></li>
-                        <li><a href="#">Site maps</a></li>
-                    </ul>
-                </p>
-            </div>
-            <div class="col footer-col colorlib-widget">
-                <h4>Information</h4>
-                <p>
-                    <ul class="colorlib-footer-links">
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">Delivery Information</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Support</a></li>
-                        <li><a href="#">Order Tracking</a></li>
-                    </ul>
-                </p>
-            </div>
-
-       
-  
-                    <span class="block">Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a> , <a href="http://pexels.com/" target="_blank">Pexels.com</a></span>
-                </p>
-            </div>
-        </div>
-    </div>
+		
+</p>
+		</div>
+	</div>
 </footer>
-	<!-- jQuery -->
-	<script src="{% static 'user/js/jquery.min.js' %}"></script>
-   <!-- popper -->
-   <script src="{% static 'user/js/popper.min.js' %}"></script>
-   <!-- bootstrap 4.1 -->
-   <script src="{% static 'user/js/bootstrap.min.js' %}"></script>
-   <!-- jQuery easing -->
-   <script src="{% static 'user/js/jquery.easing.1.3.js' %}"></script>
-	<!-- Waypoints -->
-	<script src="{% static 'user/js/jquery.waypoints.min.js' %}"></script>
-	<!-- Flexslider -->
-	<script src="{% static 'user/js/jquery.flexslider-min.js' %}"></script>
-	<!-- Owl carousel -->
-	<script src="{% static 'user/js/owl.carousel.min.js' %}"></script>
-	<!-- Magnific Popup -->
-	<script src="{% static 'user/js/jquery.magnific-popup.min.js' %}"></script>
-	<script src="{% static 'user/js/magnific-popup-options.js' %}"></script>
-	<!-- Date Picker -->
-		<script src="{% static 'user/js/bootstrap-datepicker.js' %}"></script>
-	<!-- Stellar Parallax -->
-		<script src="{% static 'user/js/jquery.stellar.min.js' %}"></script>
-	<!-- Main -->
-		<script src="{% static 'user/js/main.js' %}"></script>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-	</body>
-</html>
+{% endblock %}
+
 
 
 

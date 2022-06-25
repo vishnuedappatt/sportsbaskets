@@ -1,5 +1,8 @@
 from django.contrib import admin
-from .models import Product,Section,Brand,Cart,CartItem,Variation
+from .models import Product, Reviews,Section,Brand,Cart,CartItem,Variation,Wishlist,DiscountCoupon,Discount
+
+
+
 
 class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields ={'slug':('name',)}
@@ -23,3 +26,7 @@ admin.site.register(Brand)
 admin.site.register(Cart,CartAdmin)
 admin.site.register(CartItem,CartItemAdmin)
 admin.site.register(Variation,variationAdmin)
+admin.site.register(Wishlist)
+admin.site.register(DiscountCoupon)
+admin.site.register(Discount)
+admin.site.register(Reviews)

@@ -1,0 +1,96 @@
+
+
+{% extends 'adminz/base.html' %}
+
+
+{% block content %}
+
+
+<div class="col-lg-12 grid-margin stretch-card">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Discount List</h4>
+      <p class="card-description">
+        <button class="btn btn-rounded btn-warning"><a href="{% url 'add_discount' %}">ADD</a></button>
+        <form method="GET" action="{% url 'sectionsearch' %}">
+          {% csrf_token %}
+          <div class="input-group">
+            <input type="text" class="form-control rounded border-primary" name="keyword" placeholder="Search Here" aria-label="Search" aria-describedby="search-addon" />
+            <button type="submit" class="btn btn-outline-primary">search</button>
+          </div>
+        </form>
+      </p>
+      {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+                                          
+              <div class="alert alert-success alert-dismissiblen ">
+                  <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  <strong>{{message}}</strong> 
+              </div>
+          {% endfor %}
+      </ul>
+      {% endif %}
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th style="font-weight: 600;">
+                Discount Code
+              </th>
+              <th style="font-weight: 600;">
+                Discount
+              </th>
+              <th style="font-weight: 600;">
+                Available from
+              </th>
+              <th style="font-weight: 600;">
+                 Edit
+              </th>
+            
+              <th style="font-weight: 600;">
+                 Delete
+              </th>
+            
+            </tr>
+          </thead>
+          <tbody>
+            <tr>{% for x in disc %}
+              
+                <td>
+                  <h6> {{x.coupon_code}}</h6>
+                </td>
+                <td>
+                  <h6> {{x.discount}}</h6>
+                </td>
+                <td>
+                  <h6> {{x.active_from}}</h6>
+                </td>
+             
+                
+          
+              <td>
+                <a style="color:green;" href="{% url 'edit_discount' x.id %}"><i class=" mdi mdi-lead-pencil "  aria-hidden="true"></i> </a>
+                
+          
+              </td>
+              <td>
+                <a style="color: red;" onclick="return confirm('are you sure to delete'+''+ '{{x.name}}')" href="{% url 'delete_discount' x.id %}"><i class=" mdi mdi-delete " aria-hidden="true"></i></a>
+                 
+              </td>
+              
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+{% endblock %}

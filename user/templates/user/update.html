@@ -1,0 +1,124 @@
+{% extends  'products/base.html' %}
+{% block content %}
+
+{% load static %}
+
+
+
+<section class="login_box_area section_gap mt-5">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="login_box_img">
+					<img class="img-fluid" src="{% static 'home/images/bg/lgg.jpg'  %}" alt="">
+					<div class="hover">
+						<!-- <h4>SPORTSBASKET.COM</h4>
+						<p>There are advances being made in science and technology everyday, and a good example of this is the</p> -->
+						<a class="primary-btn" href="{% url 'login' %}"> Update Profile </a>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="login_form_inner">
+					<h3> Update Here </h3>
+					<form class="row login_form" action="" method="POST" id="contactForm">
+						              {%  csrf_token  %}
+						
+						<div class="col-md-12 form-group">
+						
+							
+					
+					
+								<div class="form-group">
+                                    <label for="">First Name</label>
+									<div class="form-wrapper 	">
+									
+										{{form.first_name}}	
+									</div>
+                                    <label for="">Last Name</label>
+									<div class="form-wrapper">
+										
+										{{form.last_name}}
+									</div>
+									<label for="">username</label>
+									<div class="form-wrapper">
+										
+										{{form.username}}
+									</div>
+								</div>							
+							
+                              
+								
+						
+						<div class="col-md-12 form-group">
+							<button type="submit" class="primary-btn">Update Now </button>
+						
+						</div>
+						
+					</form>
+					<a href="{% url 'profile' %}">Back to profile</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<footer class="footer-area section_gap">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4  col-md-6 col-sm-6">
+				<div class="single-footer-widget">
+					
+					<a href="{%  url 'contact' %}"><h6>About Us</h6></a>
+					<p>
+						its not a store its a world of sports 
+						
+					</p>
+					<p>explore more</p>
+
+					<a href="{% url 'home' %}">click Here</a>
+				</div>
+			</div>
+			<div class="col-lg-4  col-md-6 col-sm-6">
+				<div class="single-footer-widget">
+					<h6>Social Media</h6>
+					<p>Facebook</p>
+					<p>Instagram</p>
+					<p>Email</p>
+					<p>Twitter</p>
+				
+					<div class="" id="mc_embed_signup">
+
+						<form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+						 method="get" class="form-inline">
+					
+							<div class="info"></div>
+						</form>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-lg-4 col-md-6 col-sm-6">
+				<div class="single-footer-widget">
+					<h6>Follow Us</h6>
+					<p>Let us be social</p>
+					<div class="footer-social d-flex align-items-center">
+						<a href="#"><i class="fa fa-facebook"></i></a>
+						<a href="#"><i class="fa fa-twitter"></i></a>
+						<a href="#"><i class="fa fa-dribbble"></i></a>
+						<a href="#"><i class="fa fa-behance"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+</p>
+		</div>
+	</div>
+</footer>
+{% endblock %}
+
+
+
+
+

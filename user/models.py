@@ -48,7 +48,7 @@ class Account(AbstractBaseUser):
     last_name     =models.CharField(max_length=50)
     username      =models.CharField(max_length=50,unique=True)
     email         =models.EmailField(max_length=100,unique=True)
-    phone_number  =models.TextField(max_length=10,blank=False)
+    phone_number  =models.CharField(max_length=10,blank=False)
 
 
     date_jointed =models.DateTimeField(auto_now_add=True)
@@ -69,6 +69,8 @@ class Account(AbstractBaseUser):
 
     def has_module_perms(self,add_labal):
         return True
+
+
 
 class Address(models.Model):
     user=models.ForeignKey(Account,on_delete=models.CASCADE)

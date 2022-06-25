@@ -1,0 +1,9 @@
+
+print('welcome')
+
+
+
+<option value="">-------</option>
+{% for x in subcategory %}
+<option value="{{ x.pk }}">{{ x.name }}</option>
+{% endfor %}

@@ -1,0 +1,92 @@
+
+
+{% extends 'adminz/base.html' %}
+
+
+{% block content %}
+
+
+<div class="col-md-12 stretch-card">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">User List</h4>
+      <p class="card-description">
+        <button class="btn btn-rounded btn-warning"><a href="{% url 'addproduct' %}">ADD</a></button>
+        <form method="GET" action="{% url 'productsearch' %}">
+          {% csrf_token %}
+          <div class="input-group"> 
+            <input type="text" class="form-control rounded border-primary" name="keyword" placeholder="Search Here" aria-label="Search" aria-describedby="search-addon" />
+            <button type="submit" class="btn btn-outline-primary">search</button>
+          </div>
+        </form>
+      </p>
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+                        
+          <div class="alert alert-success alert-dismissiblen ">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>{{message}}</strong> 
+          </div>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <table class="table">
+        <thead>
+          <th>user</th>
+          <th>email</th>
+          <th>phone Number</th>
+          <th>Last Login</th>
+          <th>Created</th>
+          <th>status</th>
+         
+        
+        </thead>
+        <tbody>
+          <tr class="table-active">
+            {% for x in account %}
+            <td>
+                <img src="https://ps.w.org/simple-user-avatar/assets/icon-256x256.png?rev=2413146" alt=""/> 
+                {{ x.first_name}} &nbsp; {{x.last_name}}
+            </td>
+            <td>
+                {{ x.email }} 
+            </td>
+            <td>
+                {{ x.phone_number}}
+            </td>
+            <td>
+               {{ x.last_login}}
+            </td>
+            <td>
+                {{x.date_jointed}}
+            </td>
+            
+            <td>
+                {% if x.is_active %}
+                <button class="badge badge-success" style="width: 80%;"><a style="text-decoration: none; color: rgb(13, 5, 5);" href="{% url 'customersUnBlock' x.id %}">Active</a> </button>
+             
+               {% else%}
+               
+               <button class="badge badge-danger" style="width: 80%;"><a style="text-decoration: none; color: white;" href="{% url 'customersUnBlock' x.id %}">Blocked</a> </button>
+               {%endif %}
+            </td>
+         
+           
+        
+            
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+{% endblock %}

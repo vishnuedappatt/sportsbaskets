@@ -1,0 +1,61 @@
+{% extends  'products/base.html' %}
+{% block content %}
+
+{% load static %}
+
+
+
+<section class="login_box_area section_gap mt-5">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="login_box_img">
+					<img class="img-fluid" src="{% static 'home/images/bg/lgg.jpg'  %}" alt="">
+					<div class="hover">
+						<h4>Login ?</h4>
+						<p></p>
+						<a class="primary-btn" href="{% url 'login' %}">Login</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="login_form_inner">
+					<h3>Not Verified</h3>
+					<form class="row login_form" action="" method="POST" id="contactForm" novalidate="novalidate">
+						{% csrf_token %}
+					
+						<div class="col-md-12 form-group">
+							{% if messages %}
+							<ul class="messages">
+								{% for message in messages %}
+																
+									<div class="alert alert-success alert-dismissiblen ">
+										<button type="button" class="close" data-dismiss="alert">&times;</button>
+										<strong>{{message}}</strong> 
+									</div>
+								{% endfor %}
+							</ul>
+							{% endif %}
+							<input type="text" class="form-control" id="code" name="phone_number" placeholder="Enter Number" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
+						</div>
+						<!-- <div class="col-md-12 form-group">
+							<input type="Password" class="form-control" id="Password" name="Password" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+						</div> -->
+						
+						<div class="col-md-12 form-group">
+							<button type="submit" value="submit" class="primary-btn">Get OTP</button>
+							<a href="{% url 'login' %}">login ?</a>
+						</div>
+						<a href="{% url 'home' %}">Back to Home</a>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% endblock %}
+
+
+
+

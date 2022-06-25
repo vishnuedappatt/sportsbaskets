@@ -17,4 +17,8 @@ urlpatterns = [
   path('category/<slug:category_slug>/<slug:subcategory_slug>/',views.subcategories,name='subcategorylist'),  
   path('category/<slug:category_slug>/<slug:subcategory_slug>/<slug:product_slug>/',views.product_detail,name='product_detail'),
   path('cart/checkout/',views.checkout,name='checkout'),
+  path('wishlist/',views.wishlist,name="wishlist"),
+  path('wishlist_add/<int:id>/',views.wishlist_add,name="wishlist_add"),
+  path('wishlist/wishlist_remove/<int:id>/',views.wishlist_remove,name='wishlist_remove'),
+  path('wishlist/<int:id>/',views.remove_address,name='remove_address'),
 ]

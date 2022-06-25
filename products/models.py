@@ -27,9 +27,11 @@ class Product(models.Model):
     slug         =models.SlugField(unique=True)
     description  =models.TextField(max_length=200)
     price        =models.DecimalField(max_digits=6,decimal_places=2)
-    section      =models.ForeignKey(Section,on_delete=models.CASCADE,blank=True,null=True)
-    discount     =models.DecimalField(max_digits=6,decimal_places=2,null=True,blank=True)
+    section      =models.ForeignKey(Section,on_delete=models.CASCADE,blank=True,null=True)   
     image        =models.ImageField(upload_to='gallery',null=True,blank=True)
+    image1        =models.ImageField(upload_to='gallery',null=True,blank=True)
+    image2        =models.ImageField(upload_to='gallery',null=True,blank=True)
+    image3        =models.ImageField(upload_to='gallery',null=True,blank=True)
     stock        =models.IntegerField()
     brand        =models.ForeignKey(Brand,on_delete=models.CASCADE,null=True,blank=True)
     availability =models.BooleanField()
@@ -104,4 +106,51 @@ class CartItem(models.Model):
         
     def __unicode__(self):
         return self.product
+
+
+
+class Wishlist(models.Model):    
+    user=models.ForeignKey(Account,on_delete=models.CASCADE)
+    product=models.ForeignKey(Product,on_delete=models.CASCADE)
+
+    
+    def __str__(self):
+        return self.product.name
+
+
+
+
+
+class Reviews(models.Model):
+    product=models.ForeignKey(Product,on_delete=models.CASCADE)
+    user=models.ForeignKey(Account,on_delete= models.CASCADE)
+    description=models.TextField(max_length=300)
+    image=models.ImageField(upload_to='reviews',null=True,blank=True)  
+    created_date=models.DateTimeField(auto_now=True)
+    rating=models.IntegerField(null=True,blank=True)
+
+    def __str__(self):
+        return self.product.name
+
+
+
+class DiscountCoupon(models.Model):
+    coupon_code=models.CharField(max_length=10)
+    discount=models.DecimalField(max_digits=5,decimal_places=2)
+    active_from=models.DecimalField(max_digits=8,decimal_places=2)
+
+    def __str__(self):
+        return self.coupon_code
+
+
+
+class Discount(models.Model):
+    user=models.ForeignKey(Account,on_delete=models.CASCADE)
+    discount_appiled=models.DecimalField(max_digits=6,decimal_places=2)
+
+
+    def __str__(self):
+        return self.user.email
+
+  
 

@@ -1,0 +1,102 @@
+
+
+{% extends 'adminz/base.html' %}
+
+
+{% block content %}
+
+
+  <div id="container " style="width: 75%;margin-left: 100px;">
+
+    <h1 style="text-align: center;">MOST SELLED PRODUCTS</h1>
+    <canvas id="population-chart" data-url="{% url 'quantity_chart' %}"></canvas>  
+  </div>
+  <br>
+  <br>
+  <br>
+  <h1 style="text-align: center;">MOST BUYED CATEGORIES</h1>
+  <div id="container" style="width: 75%; margin-left: 100px;">
+    <canvas id="category-chart" data-url="{% url 'category_chart' %}"></canvas>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  <script>
+
+    $(function () {
+
+      var $populationChart = $("#population-chart");
+      $.ajax({
+        url: $populationChart.data("url"),
+        success: function (data) {
+
+          var ctx = $populationChart[0].getContext("2d");
+
+          new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: data.labels,
+              datasets: [{
+                label: 'sales',
+                backgroundColor: 'blue',
+                data: data.data
+              }]          
+            },
+            options: {
+              responsive: true,
+              legend: {
+                position: 'top',
+              },
+              title: {
+                display: true,
+                text: 'Population Bar Chart'
+              }
+            }
+          });
+
+        }
+      });
+
+    });
+
+  </script>
+  <script>
+
+    $(function () {
+
+      var $categoryChart = $("#category-chart");
+      $.ajax({
+        url: $categoryChart.data("url"),
+        success: function (data) {
+
+          var ctx = $categoryChart[0].getContext("2d");
+
+          new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: data.labels,
+              datasets: [{
+                label: 'Category',
+                backgroundColor: 'red',
+                data: data.data
+              }]          
+            },
+            options: {
+              responsive: true,
+              legend: {
+                position: 'top',
+              },
+              title: {
+                display: true,
+                text: 'Category Bar Chart'
+              }
+            }
+          });
+
+        }
+      });
+
+    });
+
+  </script>
+{%  endblock %}

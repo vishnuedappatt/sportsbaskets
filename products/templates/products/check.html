@@ -23,51 +23,63 @@
     <div class="container">
        
         <div class="billing_details">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                                                
+                    <div class="alert alert-success alert-dismissiblen ">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>{{message}}</strong> 
+                    </div>
+                {% endfor %}
+            </ul>
+            {% endif %}
             <div class="row">
+              
                 <div class="col-lg-5">
                     <h3>Billing Details</h3>               
                     <form class="row contact_form" action="" method="POST">
                         {% csrf_token %}
-                    
+                       
                         <div class="col-md-6 form-group p_star">
-                            <label for="">first_name</label>
+                            <label style="color: black;" for="">first name</label>
                             <input type="text" class="form-control" id="first" name="first_name">
                            
                         </div>
                         <div class="col-md-6 form-group p_star">
-                            <label for="">last_name</label>
+                            <label style="color: black;" for="">last name</label>
                             <input type="text" class="form-control" id="last" name="last_name">
                            
                         </div>
                         
                         <div class="col-md-6 form-group p_star">
-                            <label for="">phone</label>
+                            <label style="color: black;" for="">phone</label>
                             <input type="text" class="form-control" id="number" name="phone" required>
                            
                         </div>
                         <div class="col-md-6 form-group p_star">
-                            <label for="">email</label>
+                            <label style="color: black;" for="">email</label>
                             <input type="email" class="form-control" id="email" name="email">
                            
                         </div>
                         
                         <div class="col-md-12 form-group p_star">
-                            <label for="">address_line_1</label>
+                            <label style="color: black;" for="">address line 1</label>
                             <input type="text" class="form-control" id="address_line_1" name="address_line_1" required>
                            
                         </div>
                         <div class="col-md-12 form-group p_star"> 
-                            <label for="">address_line_2(optional)</label>                           
+                            <label style="color: black;" for="">address line 2(optional)</label>                           
                             <input type="text" class="form-control" id="add2" name="address_line_2">
                      
                         </div>
                         <div class="col-md-12 form-group p_star">
-                            <label for="">city</label>
+                            <label style="color: black;" for="">city</label>
                             <input type="text" class="form-control" id="city" name="city">
                          
                         </div>
                         <div class="col-md-12 form-group p_star">
-                            <label  for="">District</label>
+                            <label style="color: black;"  for="">District</label>
                             <select name="district" class="country_select">
                                 <option value="1">District</option>
                                 <option value="Kasargod">Kasargod</option>
@@ -87,15 +99,17 @@
                             </select>
                         </div>
                         <div class="col-md-12 form-group p_star">
-                            <label for="">state</label>
+                            <label style="color: black;" for="">state</label>
                             <select name="state" class="country_select">
+                                <option value="">Select</option>
                                 <option value="kerala">kerala</option>                                
                                 <option value="karnadaka">karnadaka</option>                                
                             </select>
                         </div>
                         <div class="col-md-12 form-group p_star">
-                            <label  for="">country</label>
+                            <label  style="color: black;" for="">country</label>
                             <select name="country" class="country_select">
+                                <option value="">Select</option>                                
                                 <option value="india">india</option>                                
                             </select>
                         </div>                      
@@ -106,23 +120,54 @@
                             <input type="text" class="form-control" id="zip" name="zip" placeholder="Postcode/ZIP" required>
                         </div>
                         <div class="checkout_btn_inner ">
-                            <button type="submit" style="margin-left: 30%;" class="btn primary-btn "> Save</button>
+                            <button type="submit"  style="margin-left: 30%;" class="btn primary-btn "> Save</button>
                         </div>
                     </form>
                    
                     </div>
-              
-                    <div  class="col-lg-7 "><form action="{% url 'place_order' %}" method="POST"> 
+                   
+                    <div  class="col-lg-7 ">
+                        <div class="cupon_area">
+                            <div class="check_title w-100">
+                                <h2>Eligible for coupon? <a >Check below available coupon for you</a></h2>
+                            </div>
+                            {% for x in coupon %}
+                                <p style="font-weight: 800;">{{x.coupon_code}}</p>
+                                {% if grand_total_without > x.active_from %}
+                                <p style="color: red;margin-top: -10px;">You are Eligible for this code</p>
+                                {% endif %}
+                            {% endfor %}
+                            </form>                           
+                        </div>
+
+                        <!-- adeeddddddd -->
+
+                        <div class="cupon_area">
+                            <div class="check_title w-100">
+                                <h2>Have a coupon? <a href="#">Click here to enter your code</a></h2>
+                            </div>
+                            <form method="POST" action="">
+                                {% csrf_token %}
+                                <input type="text" class="shadow" name="coupon" placeholder="Enter coupon code">
+                               <button class="btn btn-primary" type="submit">Enter Coupon</button>
+                            </form>                           
+                        </div>
+                        <!-- endhere -->
+
+
+
+                        <form action="{% url 'place_order' %}" method="POST"> 
                         {% csrf_token  %}                       
                         <div class="order_box ">  
                             <div class="form-check ">{% for a in address %}
                                 <input class="form-check-input" type="radio"  name="address" value="{{a.id}}" checked>                        
                                 <label class="form-check-label" for="exampleRadios1">                            
-                                   <b>{{a.first_name}} </b>                      
+                                   <b>{{a.first_name}} </b>  <a href="{% url 'remove_address' a.id %}"><i style="margin-left:150px;color: red;font-size: large;" class="fa fa-trash "  aria-hidden="true"></i></a>                
                                 </label>
-                                {{a.id}}
-                                   <p>{{a.first_name}}{{a.last_name}},{{a.address_line_1}}<br>,{{a.phone}},{{a.email}},<br>{{a.city}},{{a.state}},<br>{{a.country}},{{a.zip}}</p> 
+                                
+                                   <p>{{a.first_name}}{{a.last_name}},{{a.address_line_1}}<br>,{{a.email}},<br>{{a.city}},{{a.state}},{{a.phone}}<br>{{a.country}},{{a.zip}}</p> 
                                 {% endfor %}
+                             
                               </div>
                             <h2>Your Order</h2>
                             <ul class="list mt-1">
@@ -145,9 +190,14 @@
                             
                             </ul> 
                             <ul class="list mt-2 ">
-                                <li><a style="color: black; font-weight: 700;" href="#">Subtotal <span>{{total}}</span></a></li>
-                                <li><a style="color: black; "href="#">Tax <span>{{tax}}</span></a></li>
-                                <li><a style="color:black;font-weight: 800;" href="#">Grand Total <span>{{grand_total}}</span></a></li>
+                                <li><a style="color: black; font-weight: 700;" href="#">Subtotal <span>₹ {{total}}</span></a></li>
+                                <li><a style="color: black; "href="#">Tax <span>₹ {{tax}}</span></a></li>
+                                {% if not discount_available %}
+                                <li><a style="color:black;font-weight: 800;" href="#">Grand Total <span>₹ {{grand_total_without}}</span></a></li>
+                                {% else %}
+                                <li><a style="color: black; "href="#">Discount <span>₹ {{ discount_available }}</span></a></li>
+                                <li><a style="color:black;font-weight: 800;" href="#">Grand Total <span>₹ {{grand_total}}</span></a></li>
+                                {% endif %}
                             </ul>
                             <div class="checkout_btn_inner d-flex align-items-center">
                                 <button type="submit" style="margin-left: 30%;" class="btn primary-btn "> Place Order</button>

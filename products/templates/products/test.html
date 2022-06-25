@@ -17,7 +17,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Karma Shop</title>
+	<title>Sportsbasket.com</title>
 	<!--
 		CSS
 		============================================= -->
@@ -32,6 +32,8 @@
 	<link rel="stylesheet" href="{% static 'test/css/ion.rangeSlider.skinFlat.css' %}" />
 	<link rel="stylesheet" href="{% static 'test/css/magnific-popup.css' %}">
 	<link rel="stylesheet" href="{% static 'test/css/main.css' %}">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </head>
 
 <body style="background-color: rgba(239, 232, 232, 0.3);">
@@ -42,7 +44,7 @@
 			<nav class="navbar navbar-expand-lg navbar-light main_box">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="index.html"><img style="width: 70px; height: 70px;" src="{%  static 'home/images/bg/l1.png' %}" alt=""></a>
+					<a class="navbar-brand logo_h" href=""><img style="width: 70px; height: 70px;" src="{%  static 'home/images/bg/l1.png' %}" alt=""></a>
 					<h3>SportsBascket.com</h3>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,12 +76,15 @@
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">Account</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="login.html">Profile</a></li>
+									{% if user.is_authenticated %}
+									<li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
+									{% else %}
 									<li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Log In</a></li>
 									<li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Sign Up</a></li>
+									{% endif %}
 								</ul>
 							</li>
-							<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+							<li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
 							<li><a href="{% url 'cart' %}">						
 							<button type="button" class="btn btn-primary">
 							<span class="badge bg-danger ms-2">{{ cart_count}}</span>
@@ -97,12 +102,12 @@
 							<li class="nav-item"><a  class="nav-link  fw-3" >
 								<!-- <i class="fa fa-cart-arrow-down  fa-2x" aria-hidden="true"></i></a></li> -->
 								
-							<li class="nav-item"><a class="nav-link" href="contact.html" ><i class="fa fa-heart fa-2x" aria-hidden="true"></i>
+							<li class="nav-item"><a class="nav-link" href="{% url 'wishlist' %}" ><i class="fa fa-heart fa-2x" aria-hidden="true"></i>
 							</a></li>
 					
 																			
 						{% if user.is_authenticated %}
-						<li class="nav-item active"><a class="nav-link" href="{%  url 'logout' %}">Log Out</a></li>
+						<li class="nav-item active"><li style="color: rgb(129, 129, 222);margin-top: 7px;">{{ request.user.username}}</li><a class="nav-link" href="{%  url 'logout' %}">Log Out</a></li>
 						{% else %}
 						<li class="nav-item active"><a class="nav-link" href="{%  url 'login' %}">Log In</a></li>
 						{% endif %}
@@ -130,7 +135,17 @@
 		</div>
 	</header>
 	<!-- End Header Area -->
-
+	{% if messages %}
+	<ul class="messages">
+	  {% for message in messages %}
+					  
+		<div class="alert alert-success alert-dismissiblen ">
+		  <button type="button" class="close" data-dismiss="alert">&times;</button>
+		  <strong>{{message}}</strong> 
+		</div>
+	  {% endfor %}
+	</ul>
+	{% endif %}
 	<!-- start banner Area -->
 	<section class="banner-area">
 		<div class="container">
@@ -182,7 +197,12 @@
 	</section>
 	<!-- End banner Area -->
 
-    
+<br>
+<br>
+
+<marquee behavior="" direction="left">
+	<h3>Flat 5 % OFF on every purchase above ₹ 500,coupon code is <b>FLAT150 *</b></h3>
+</marquee>	
 
 <section  class="categorys mt-5">
     <div class="container mt-5">
@@ -203,7 +223,7 @@
                     <div class="productcategory-text">
                         <a href="#">
                             <br>
-                           <strong><a href=""><h3>{{ link.title }}</h3></a> </strong>
+                           <strong><a href="{{  link.get_url }}"><h3>{{ link.title }}</h3></a> </strong>
                           
                         </a>
                     </div>
@@ -328,7 +348,7 @@
 	</section>
 	<!-- End category Area -->
 
-<H1 style="text-align: center; color: gray;">MOST POPULAR ITEMS</H1>
+<H1 style="text-align: center; color: gray;">NEW ARRIVAL ITEMS</H1>
 <section  class="">
 	<!-- single product slide -->
 	<div class="">
@@ -339,26 +359,28 @@
 				<div class="col-lg-3 col-md-6 mt-5 border-primary">
 					<div class="single-product  border  border-primary">
 						<h4 style="text-align: center; color: blue; background-color: rgba(95, 158, 160, 0.375);">TOP</h4>
+						{% if pro.image %}
 						<img class="img-fluid" src="{{pro.image.url}}" alt="">
+						{% endif %}
 						<div class="product-details">
 							<h6 ><a style="text-decoration: none;" href="{{ pro.get_url }}">{{pro.name}}</a></h6>
 							<div class="price">
-								<h6>${{pro.price}}</h6>
+								<h6>₹ {{pro.price}}</h6>
 								<h6 class="l-through"></h6>
 							</div>
 							<div class="prd-bottom">
 
 								{% if pro.stock <= 0 %}
 									
-										Out Of Stoc
-									{% else %}
+										Out Of Stock
+								{% else %}
 									
-									<a href="{% url 'add_cart' pro.id %}" class="social-info">
+									<a href="{{ pro.get_url}}" class="social-info">
 									<span class="ti-bag bg-primary"></span>
 									<p class="hover-text">add to bag</p>
-									{% endif %}
+								{% endif %}
 									</a>
-								<a href="" class="social-info">
+								<a href="{% url 'wishlist_add' pro.id  %}" class="social-info">
 									<span class="lnr lnr-heart bg-danger"></span>
 									<p class="hover-text">Wishlist</p>
 								</a>
@@ -384,7 +406,7 @@
 <!-- end product Area -->
 
 	<!-- Start exclusive deal Area -->
-	<section class="exclusive-deal-area">
+	{% comment %} <section class="exclusive-deal-area">
 		<div class="container-fluid">
 			<div class="row justify-content-center align-items-center">
 				<div class="col-lg-6 no-padding exclusive-left">
@@ -478,11 +500,11 @@
 				</a>
 			</div>
 		</div>
-	</section>
+	</section> {% endcomment %}
 	<!-- End brand Area -->
 
 	<!-- Start related-product Area -->
-	<section class="related-product-area section_gap_bottom">
+	{% comment %} <section class="related-product-area section_gap_bottom">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-lg-6 text-center">
@@ -615,6 +637,45 @@
 				</div>
 			</div>
 		</div>
+	</section> {% endcomment %}
+	<section class="related-product-area section_gap_bottom">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-6 text-center">
+					<div class="section-title">
+						<h1>EXCLUSIVE ITEMS	</h1>
+						<p></p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 ">
+					<div class="row"> {% for x in related_product %}
+						<div class="col-lg-3 ">
+							<div  class="single-related-product">
+								{% if x.image %}
+								<a href="#"><img style="width:45%;height:50%" src="{{ x.image.url  }}" alt=""></a>
+								{% endif %}
+								<div class="desc">
+									
+									<a href="{{x.get_url}}" class="title">{{ x.category.title}}</a>
+									<div class="price">
+										<h6>₹ {{ x.price }}</h6>
+										{% comment %} <h6 class="l-through">$210.00</h6> {% endcomment %}
+									</div>
+								</div>
+							</div> 
+						</div>{% endfor %}
+					
+								</div>
+							</div>
+						</div> 
+
+					</div>
+				</div>
+				
+			</div>
+		</div>
 	</section>
 	<!-- End related-product Area -->
 
@@ -622,60 +683,39 @@
 	<footer class="footer-area section_gap">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-3  col-md-6 col-sm-6">
+				<div class="col-lg-4  col-md-6 col-sm-6">
 					<div class="single-footer-widget">
-						<h6>About Us</h6>
+						
+						<a href="{%  url 'contact' %}"><h6>About Us</h6></a>
 						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore
-							magna aliqua.
+							its not a store its a world of sports 
+							
 						</p>
+						<p>explore more</p>
+
+						<a href="{% url 'home' %}">click Here</a>
 					</div>
 				</div>
 				<div class="col-lg-4  col-md-6 col-sm-6">
 					<div class="single-footer-widget">
-						<h6>Newsletter</h6>
-						<p>Stay update with our latest</p>
+						<h6>Social Media</h6>
+						<p>Facebook</p>
+						<p>Instagram</p>
+						<p>Email</p>
+						<p>Twitter</p>
+					
 						<div class="" id="mc_embed_signup">
 
 							<form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
 							 method="get" class="form-inline">
-
-								<div class="d-flex flex-row">
-
-									<input class="form-control" name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '"
-									 required="" type="email">
-
-
-									<button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
-									<div style="position: absolute; left: -5000px;">
-										<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
-									</div>
-
-									<!-- <div class="col-lg-4 col-md-4">
-												<button class="bb-btn btn"><span class="lnr lnr-arrow-right"></span></button>
-											</div>  -->
-								</div>
+						
 								<div class="info"></div>
 							</form>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3  col-md-6 col-sm-6">
-					<div class="single-footer-widget mail-chimp">
-						<h6 class="mb-20">Instragram Feed</h6>
-						<ul class="instafeed d-flex flex-wrap">
-							<li><img src="img/i1.jpg" alt=""></li>
-							<li><img src="img/i2.jpg" alt=""></li>
-							<li><img src="img/i3.jpg" alt=""></li>
-							<li><img src="img/i4.jpg" alt=""></li>
-							<li><img src="img/i5.jpg" alt=""></li>
-							<li><img src="img/i6.jpg" alt=""></li>
-							<li><img src="img/i7.jpg" alt=""></li>
-							<li><img src="img/i8.jpg" alt=""></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-2 col-md-6 col-sm-6">
+				
+				<div class="col-lg-4 col-md-6 col-sm-6">
 					<div class="single-footer-widget">
 						<h6>Follow Us</h6>
 						<p>Let us be social</p>
@@ -688,16 +728,13 @@
 					</div>
 				</div>
 			</div>
-			<div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
-				<p class="footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+			
 </p>
 			</div>
 		</div>
 	</footer>
 	<!-- End footer Area -->
-
+	<script src="{% static 'home/js/style.js' %}"></script>
 	<script src="{% static 'test/js/vendor/jquery-2.2.4.min.js' %}"></script>
 	<script src="{% static 'test/https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js' %}" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
 	 crossorigin="anonymous"></script>

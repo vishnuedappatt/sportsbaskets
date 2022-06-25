@@ -1,0 +1,33 @@
+{% extends 'products/base.html' %}
+{%  load static %}
+{% block content  %}
+
+{% if status %}                                                                                                                                                                                                                                                                           
+<div class="container" style="text-align: center;">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <i class="fa fa-check-circle" aria-hidden="true" style="font-size: 180px; background-color:  greeen;color: rgb(30, 222, 75);"></i>
+    <div class="mt-5">
+
+        <h1>your payment is completed successfully</h1>
+        <br>
+        <h2>Thankyou for purchasing </h2><b> SPORTSBASKET</b>
+        <a href="{%  url 'home' %}" class="btn btn-primary" role="button">Buy Another</a>
+    </div>
+ {% else %}
+    <div class="" style="margin-left:700px; margin-top: 300px;">
+        <h2>Ooops!! Payment Failed</h2>
+        <a href="{%  url 'home' %}" class="btn btn-primary ml-5" role="button">Buy Another</a>
+    </div>
+
+
+
+{% endif %}
+
+
+</div>
+{% endblock %}

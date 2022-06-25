@@ -1,0 +1,107 @@
+
+
+{% extends 'adminz/base.html' %}
+
+
+{% block content %}
+
+
+<div class="col-lg-12 grid-margin stretch-card">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Variation List</h4>
+      <p class="card-description">
+        <button class="btn btn-rounded btn-warning"><a href="{% url 'add_variation' %}">ADD</a></button>
+        <form method="GET" action="{% url 'searchvaraition' %}">
+          {% csrf_token %}
+          <div class="input-group">
+            <input type="text" class="form-control rounded border-primary" name="keyword" placeholder="Search Here" aria-label="Search" aria-describedby="search-addon" />
+            <button type="submit" class="btn btn-outline-primary">search</button>
+          </div>
+        </form>
+      </p>
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+                        
+          <div class="alert alert-success alert-dismissiblen ">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>{{message}}</strong> 
+          </div>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+            
+              <th style="font-weight: 600;">
+                product
+              </th>
+              <th style="font-weight: 600;">
+                Variation Category
+              </th>
+              <th style="font-weight: 600;">
+                variation
+              </th>
+              <th style="font-weight: 600;">
+                Status
+              </th>
+              <th style="font-weight: 600;">
+                created at
+              </th>
+              <th style="font-weight: 600;">
+                edit
+              </th>
+              <th style="font-weight: 600;">
+                 Delete
+              </th>
+            
+            </tr>
+          </thead>
+          <tbody>
+            <tr>{% for x in var %}
+            
+                <td>
+                  <h5> {{x.product}}</h5>
+                </td>
+                <td>
+                  <h5> {{x.variation_category}}</h5>
+                </td>
+                <td>
+                  <h5> {{x.variation_value}}</h5>
+                </td>
+                <td>
+                  <h5> {{x.is_active}}</h5>
+                </td>
+                <td>
+                  <h5> {{x.created_date}}</h5>
+                </td>
+             
+                
+          
+              <td>
+                <a style="color:green;" href="{% url 'edit_variation' x.id %}"><i class=" mdi mdi-lead-pencil "  aria-hidden="true"></i> </a>                
+          
+              </td>
+              <td>
+                <a style="color: red;" onclick="return confirm('are you sure to delete'+''+ '{{x.title}}')" href="{% url 'delete_variation' x.id %}"><i class=" mdi mdi-delete " aria-hidden="true"></i></a>
+                 
+              </td>
+              
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+{% endblock %}

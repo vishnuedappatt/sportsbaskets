@@ -1,0 +1,32 @@
+
+
+{% extends 'adminz/base.html' %}
+
+
+{% block content %}
+
+<div class="main-panel">        
+    <div class="content-wrapper">
+      <div class="row  d-flex justify-content-center">
+        <div  class="col-md-6 grid-margin stretch-card ml-5 m-5 shadow ">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Edit Section-form</h4>
+             
+              <form class="forms-sample"action=""  enctype='multipart/form-data' method="POST">
+                {% csrf_token %}
+
+                <div class="form-group">
+                  <label for="exampleInputUsername1">status</label>
+                 {{form.as_p}}
+                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+              
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+  
+{%  endblock %}
