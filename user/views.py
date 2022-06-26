@@ -394,6 +394,7 @@ def dashboard(request):
 def not_verified(request):
     if request.method=='POST':
         phone_number=request.POST['phone_number']
+        request.session['phone_number']=phone_number
         acc=Account.objects.filter(phone_number=phone_number,is_active=False).exists()        
         block=BlockedUser.objects.filter(phone=phone_number).exists()
        

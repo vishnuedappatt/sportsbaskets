@@ -99,10 +99,10 @@ AUTH_USER_MODEL='user.Account'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME':'sportsbasket',
-        'USER': 'ubuntu',
-        'PASSWORD':'password',
-        'HOST':'database-2.cr8uhayyj9si.ap-south-1.rds.amazonaws.com',
+        'NAME':config('DB_NAME',cast=str),
+        'USER': config('DB_USER',cast=str),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'), 
         'PORT':'5432'
     }
 }
@@ -196,7 +196,7 @@ TWILIO_VERIFY_SERVICE_SID=config('TWILIO_VERIFY_SERVICE_SID')
 TWILIO_ACCOUNT_SID= config('TWILIO_ACCOUNT_SID')
 TWILIO_AUTH_TOKEN= config('TWILIO_AUTH_TOKEN') 
 
-GOOGLE_RECAPTCHA_SECRET_KEY = '6LeNJpIgAAAAAMI3ZOUc6Bbn6tIBy-SRjtxYIsYC'
+GOOGLE_RECAPTCHA_SECRET_KEY =config('GOOGLE_RECAPTCHA_SECRET_KEY')
 
 
 RAZORPAY_ID=config('RAZORPAY_ID')
