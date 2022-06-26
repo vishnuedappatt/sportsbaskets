@@ -143,29 +143,29 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 
-# STATIC_URL = '/static/'
-# STATIC_ROOT = '/staticfiles'
-# STATICFILES_DIRS = [
-#     os.path.join( BASE_DIR / "static")
-#  ]
+STATIC_URL = '/static/'
+STATIC_ROOT = '/staticfiles'
+STATICFILES_DIRS = [
+    os.path.join( BASE_DIR / "static")
+ ]
 
-AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl':'max-age=86400',
-}
-AWS_S3_FILE_OVERWRITE = True
-AWS_DEFAULT_ACL = 'public-read'
-AWS_LOCATION = 'static'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_DIRS=[
-    'static',
-]
-STATIC_URL = 'http://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-DEFAULT_FILE_STORAGE = 'sportsbasket.media_storages.MediaStorage'
+# AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+# AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+# AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+# AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+# AWS_S3_OBJECT_PARAMETERS = {
+#     'CacheControl':'max-age=86400',
+# }
+# AWS_S3_FILE_OVERWRITE = True
+# AWS_DEFAULT_ACL = 'public-read'
+# AWS_LOCATION = 'static'
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# STATICFILES_DIRS=[
+#     'static',
+# ]
+# STATIC_URL = 'http://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# DEFAULT_FILE_STORAGE = 'sportsbasket.media_storages.MediaStorage'
 
 #media file confirmation email
 EMAIL_BACKEND = config('EMAIL_BACKEND')
