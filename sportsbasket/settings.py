@@ -99,10 +99,10 @@ AUTH_USER_MODEL='user.Account'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME':'store',
-        'USER': 'postgres',
-        'PASSWORD':'12345',
-        'HOST':'127.0.0.1',
+        'NAME':'sportsbasket',
+        'USER': 'ubuntu',
+        'PASSWORD':'password',
+        'HOST':'database-2.cr8uhayyj9si.ap-south-1.rds.amazonaws.com',
         'PORT':'5432'
     }
 }
