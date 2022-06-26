@@ -1,8 +1,10 @@
 import os
+import django
 from twilio.rest import Client
 from twilio.base.exceptions import TwilioRestException
+from django.conf import settings
 
-client = Client(os.environ['TWILIO_ACCOUNT_SID'], os.environ['TWILIO_AUTH_TOKEN'])
+client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
 verify = client.verify.services(os.environ['TWILIO_VERIFY_SERVICE_SID'])
 
 
