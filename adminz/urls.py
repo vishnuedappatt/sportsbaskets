@@ -22,7 +22,7 @@ urlpatterns = [
   path('subcategory/search/',views.subcategorysearch,name='subcategorysearch'),
   path('subcategory/<str:slug>/',views.EditSubCategory,name='EditSubCategory'),
   path('subcategory_delete/<str:slug>/',views.DeleteSubCategory,name='DeleteSubCategory'),
-  path('subcategory/add/',views.AddSubCategory,name='AddSubCategory'),
+  path('subcat/add/',views.AddSubCategory,name='AddSubCategory'),
   # product
   path('products/',views.product_show,name='product_show'),
   path('products/search/',views.productsearch,name='productsearch'),

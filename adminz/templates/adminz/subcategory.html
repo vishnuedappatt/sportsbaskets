@@ -11,7 +11,7 @@
     <div class="card-body">
       <h4 class="card-title">SubCategory List</h4>
       <p class="card-description">
-        <button class="btn btn-rounded btn-warning"><a href="{% url 'addCategory' %}">ADD</a></button>
+        <button class="btn btn-rounded btn-warning"><a href="{% url 'AddSubCategory' %}">ADD</a></button>
         <form method="GET" action="{% url 'subcategorysearch' %}">
           {% csrf_token %}
           <div class="input-group">
@@ -70,12 +70,12 @@
                 
           
               <td>
-                <a style="color:green;" href="{% url 'EditSubCategory' x.slug %}"><i class=" mdi mdi-lead-pencil "  aria-hidden="true"></i> </a>
+                <a style="color:green;" href="{% url 'EditSubCategory' x.slug %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> </a>
                 
           
               </td>
               <td>
-                <a style="color: red;" onclick="return confirm('are you sure to delete'+''+ '{{x.name}}')" href="{% url 'DeleteSubCategory' x.slug %}"><i class=" mdi mdi-delete " aria-hidden="true"></i></a>
+                <a style="color: red;" onclick="return confirm('are you sure to delete'+''+ '{{x.name}}')" href="{% url 'DeleteSubCategory' x.slug %}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                  
               </td>
               

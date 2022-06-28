@@ -13,7 +13,7 @@ urlpatterns = [
   
     
     path('payment_status/',views.payment_status,name='payment_status'),
-    path('captcha_verify/',views.captcha_verify,name='captcha_verify'),
+    # path('captcha_verify/',views.captcha_verify,name='captcha_verify'),
 
     # path('payment/refund/<int:id>/',views.refund_payment,name='refund_payment'),
 ]

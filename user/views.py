@@ -98,8 +98,7 @@ def login(request):
             mobile=account_user.phone_number
             block=BlockedUser.objects.filter(phone=mobile).exists()
             if not block:
-                send(mobile) 
-                
+                send(mobile)                 
                 messages.success(request,'OTP sent your phone number')              
                 return redirect('verify')     
             else:

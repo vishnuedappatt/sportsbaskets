@@ -156,17 +156,17 @@
                 <div class="product-details">
                 	<h6 ><a style="text-decoration: none;" href="{{ pro.get_url }}">{{pro.name}}</a></h6>
                   <div class="price">
-                    <h6>${{pro.price}}</h6>
+                    <h6>₹ {{pro.price}}</h6>
                     <h6 class="l-through"></h6>
                   </div>
                   <div class="prd-bottom">
 
-                    <a href="{% url 'add_cart' pro.id %} " class="social-info">
-                      <span class="ti-bag bg-primary"></span>
+                    <a href="{{ pro.get_url }} " class="social-info">
+                      <span class="me-1 bg-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
                       <p class="hover-text">add to bag</p>
                     </a>
-                    <a href="" class="social-info">
-                      <span class="lnr lnr-heart bg-danger"></span>
+                    <a href="{% url 'wishlist_add' pro.id %}" class="social-info">
+                      <span class="lnr  bg-danger"><i class="fa fa-gratipay" aria-hidden="true"></i></span>
                       <p class="hover-text">Wishlist</p>
                     </a>
                     <!-- <a href="" class="social-info">

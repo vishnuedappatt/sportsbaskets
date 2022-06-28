@@ -167,6 +167,8 @@ STATIC_URL = 'http://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_FILE_STORAGE = 'sportsbasket.media_storages.MediaStorage'
 
+
+
 #media file confirmation email
 EMAIL_BACKEND = config('EMAIL_BACKEND')
 EMAIL_HOST = config('EMAIL_HOST')
@@ -196,9 +198,10 @@ TWILIO_VERIFY_SERVICE_SID=config('TWILIO_VERIFY_SERVICE_SID')
 TWILIO_ACCOUNT_SID= config('TWILIO_ACCOUNT_SID')
 TWILIO_AUTH_TOKEN= config('TWILIO_AUTH_TOKEN') 
 
+# captcha viewing
 GOOGLE_RECAPTCHA_SECRET_KEY =config('GOOGLE_RECAPTCHA_SECRET_KEY')
 
-
+# payment
 RAZORPAY_ID=config('RAZORPAY_ID')
 RAZORPAY_KEY=config ('RAZORPAY_KEY')
 

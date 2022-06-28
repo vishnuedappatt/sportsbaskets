@@ -24,8 +24,8 @@
 		CSS
 		============================================= -->
 	<link rel="stylesheet" href="{% static 'test/css/linearicons.css' %}">
-	<link rel="stylesheet" href="{% static 'test/css/font-awesome.min.css' %}">
-	<link rel="stylesheet" href="{% static 'test/css/themify-icons.css' %}">
+	{% comment %} <link rel="stylesheet" href="{% static 'test/css/font-awesome.min.css' %}"> {% endcomment %}
+	{% comment %} <link rel="stylesheet" href="{% static 'test/css/themify-icons.css' %}"> {% endcomment %}
 	<link rel="stylesheet" href="{% static 'test/css/bootstrap.css' %}">
 	<link rel="stylesheet" href="{% static 'test/css/owl.carousel.css' %}">
 	<link rel="stylesheet" href="{% static 'test/css/nice-select.css' %}">
@@ -34,7 +34,9 @@
 	<link rel="stylesheet" href="{% static 'test/css/ion.rangeSlider.skinFlat.css' %}" />
 	<link rel="stylesheet" href="{% static 'test/css/magnific-popup.css' %}">
 	<link rel="stylesheet" href="{% static 'test/css/main.css' %}">
-	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/v5-font-face.min.css">
+	<script src="https://kit.fontawesome.com/286705c05c.js" crossorigin="anonymous"></script>
+	
 </head>
 
 <body style="background-color: #efeeea25 ;">
@@ -109,7 +111,7 @@
 														
 						{% if user.is_authenticated %}
 						
-						<li class="nav-item active"><a class="nav-link" href="{%  url 'logout' %}"><li style="color: rgb(129, 129, 222);">{{ request.user.username}}</li>Log Out </a></li>
+						<li class="nav-item active"><a class="nav-link" href="{%  url 'logout' %}"><li style="color: rgb(129, 129, 222);">{{ request.user.first_name}}</li>Log Out </a></li>
 						
 						{% else %}
 						<li class="nav-item active"><a class="nav-link" href="{%  url 'login' %}">Log In</a></li>
@@ -119,7 +121,7 @@
 						
 							
 							<li class="nav-item">
-								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
+								<button class="search"><i class="fa-solid fa-magnifying-glass lnr lnr-magnifier" name="keyword  " id="search"></i></button>
 							</li>
 							
 						</ul>
@@ -132,7 +134,7 @@
 				<form class="d-flex justify-content-between" action="{% url 'search' %}" method="GET">
 					<input type="text" class="form-control" id="search_input" name="keyword" placeholder="Search Here">
 					<button type="submit" class="btn"></button>
-					<span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
+					<i class="fa-solid fa-magnifying-glass lnr lnr-magnifier" name="keyword  " id="search"></i>
 				</form>
 			</div>
 		</div>

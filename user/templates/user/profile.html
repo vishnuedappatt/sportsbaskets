@@ -16,13 +16,23 @@
                 </div>
                 <a href="{% url 'dashboard' %}"><button class="btn btn-lg ms-auto  mt-3  "style="width: 100%;border: .1px solid rgb(15, 9, 9);">order history</button></a>
                 <!-- <a href="{% url 'profile' %}"><button class="btn btn-lg ms-auto  mt-3 border " style="width: 100%;">profile</button></a> -->
-                <a href="{% url 'dashboard' %}"><button class="btn btn-lg ms-auto mt-3  "style="width: 100%;border: .1px solid rgb(15, 9, 9);">order history</button></a>
+            
                 <a href="{% url 'Pofile_edit' user.id %}"><button class="btn btn-lg ms-auto  mt-3  " style="width: 100%;border: .1px solid rgb(15, 9, 9);">Edit</button></a>
                 <a href="{% url 'change_password' %}"><button class="btn btn-lg ms-auto mt-3 "style="width: 100%;border: .1px solid rgb(15, 9, 9);"> Change Password</button></a>
              
                 
             </div>  
-               
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                                                
+                    <div class="alert alert-success alert-dismissiblen ">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>{{message}}</strong> 
+                    </div>
+                {% endfor %}
+            </ul>
+            {% endif %}
          
 
             <div  class="col-md-8">

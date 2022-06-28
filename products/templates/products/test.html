@@ -22,7 +22,7 @@
 		CSS
 		============================================= -->
 	<link rel="stylesheet" href="{% static 'test/css/linearicons.css' %}">
-	<link rel="stylesheet" href="{% static 'test/css/font-awesome.min.css' %}">
+	{% comment %} <link rel="stylesheet" href="{% static 'test/css/font-awesome.min.css' %}"> {% endcomment %}
 	<link rel="stylesheet" href="{% static 'test/css/themify-icons.css' %}">
 	<link rel="stylesheet" href="{% static 'test/css/bootstrap.css' %}">
 	<link rel="stylesheet" href="{% static 'test/css/owl.carousel.css' %}">
@@ -33,6 +33,8 @@
 	<link rel="stylesheet" href="{% static 'test/css/magnific-popup.css' %}">
 	<link rel="stylesheet" href="{% static 'test/css/main.css' %}">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://kit.fontawesome.com/286705c05c.js" crossorigin="anonymous"></script>
+
 	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </head>
 
@@ -95,7 +97,7 @@
 					
 																			
 						{% if user.is_authenticated %}
-						<li class="nav-item active"><li style="color: rgb(129, 129, 222);margin-top: 7px;">{{ request.user.username}}</li><a class="nav-link" href="{%  url 'logout' %}">Log Out</a></li>
+						<li class="nav-item active"><li style="color: rgb(129, 129, 222);margin-top: 7px;">{{ request.user.first_name}}</li><a class="nav-link" href="{%  url 'logout' %}">Log Out</a></li>
 						{% else %}
 						<li class="nav-item active"><a class="nav-link" href="{%  url 'login' %}">Log In</a></li>
 						{% endif %}
@@ -104,7 +106,7 @@
 							
 							
 							<li class="nav-item">
-								<button class="search"><span class="lnr lnr-magnifier"  name="keyword  " id="search"></span></button>
+								<button class="search"><i class="fa-solid fa-magnifying-glass lnr lnr-magnifier" name="keyword  " id="search"></i></button>
 							</li>
 							
 						</ul>
@@ -117,7 +119,7 @@
 				<form class="d-flex justify-content-between" action="{% url 'search' %}" method="GET">
 					<input type="text" class="form-control" id="search_input" name="keyword" placeholder="Search Here">
 					<button type="submit" class="btn"></button>
-					<span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
+					<i class="fa-solid fa-magnifying-glass lnr lnr-magnifier" name="keyword  " id="search"></i>
 				</form>
 			</div>
 		</div>
@@ -297,12 +299,12 @@
 								{% else %}
 									
 									<a href="{{ pro.get_url}}" class="social-info">
-									<span class="ti-bag bg-primary"></span>
+									<span class=" bg-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
 									<p class="hover-text">add to bag</p>
 								{% endif %}
 									</a>
 								<a href="{% url 'wishlist_add' pro.id  %}" class="social-info">
-									<span class="lnr lnr-heart bg-danger"></span>
+									<span class="lnr bg-danger"><i class="fa fa-gratipay" aria-hidden="true"></i></span>
 									<p class="hover-text">Wishlist</p>
 								</a>
 								<!-- <a href="" class="social-info">
@@ -310,7 +312,7 @@
 									<p class="hover-text">compare</p>
 								</a> -->
 								<a href="{{ pro.get_url}}" class="social-info">
-									<span class="lnr lnr-move"></span>
+									<span class="lnr bg-secondary"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
 									<p class="hover-text">view more</p>
 								</a>
 							</div>
@@ -324,241 +326,7 @@
 	</div>
 </section>		
 			
-<!-- end product Area -->
 
-	<!-- Start exclusive deal Area -->
-	{% comment %} <section class="exclusive-deal-area">
-		<div class="container-fluid">
-			<div class="row justify-content-center align-items-center">
-				<div class="col-lg-6 no-padding exclusive-left">
-					<div class="row clock_sec clockdiv" id="clockdiv">
-						<div class="col-lg-12">
-							<h1>Exclusive Hot Deal Ends Soon!</h1>
-							<p>Who are in extremely love with eco friendly system.</p>
-						</div>
-						<div class="col-lg-12">
-							<div class="row clock-wrap">
-								<div class="col clockinner1 clockinner">
-									<h1 class="days">150</h1>
-									<span class="smalltext">Days</span>
-								</div>
-								<div class="col clockinner clockinner1">
-									<h1 class="hours">23</h1>
-									<span class="smalltext">Hours</span>
-								</div>
-								<div class="col clockinner clockinner1">
-									<h1 class="minutes">47</h1>
-									<span class="smalltext">Mins</span>
-								</div>
-								<div class="col clockinner clockinner1">
-									<h1 class="seconds">59</h1>
-									<span class="smalltext">Secs</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<a href="" class="primary-btn">Shop Now</a>
-				</div>
-				<div class="col-lg-6 no-padding exclusive-right">
-					<div class="active-exclusive-product-slider">
-						<!-- single exclusive carousel -->
-						<div class="single-exclusive-slider">
-							<img class="img-fluid" src="img/product/e-p1.png" alt="">
-							<div class="product-details">
-								<div class="price">
-									<h6>$150.00</h6>
-									<h6 class="l-through">$210.00</h6>
-								</div>
-								<h4>addidas New Hammer sole
-									for Sports person</h4>
-								<div class="add-bag d-flex align-items-center justify-content-center">
-									<a class="add-btn" href=""><span class="ti-bag"></span></a>
-									<span class="add-text text-uppercase">Add to Bag</span>
-								</div>
-							</div>
-						</div>
-						<!-- single exclusive carousel -->
-						<div class="single-exclusive-slider">
-							<img class="img-fluid" src="img/product/e-p1.png" alt="">
-							<div class="product-details">
-								<div class="price">
-									<h6>$150.00</h6>
-									<h6 class="l-through">$210.00</h6>
-								</div>
-								<h4>addidas New Hammer sole
-									for Sports person</h4>
-								<div class="add-bag d-flex align-items-center justify-content-center">
-									<a class="add-btn" href=""><span class="ti-bag"></span></a>
-									<span class="add-text text-uppercase">Add to Bag</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End exclusive deal Area -->
-
-	<!-- Start brand Area -->
-	<section class="brand-area section_gap">
-		<div class="container">
-			<div class="row">
-				<a class="col single-img" href="#">
-					<img class="img-fluid d-block mx-auto" src="img/brand/1.png" alt="">
-				</a>
-				<a class="col single-img" href="#">
-					<img class="img-fluid d-block mx-auto" src="img/brand/2.png" alt="">
-				</a>
-				<a class="col single-img" href="#">
-					<img class="img-fluid d-block mx-auto" src="img/brand/3.png" alt="">
-				</a>
-				<a class="col single-img" href="#">
-					<img class="img-fluid d-block mx-auto" src="img/brand/4.png" alt="">
-				</a>
-				<a class="col single-img" href="#">
-					<img class="img-fluid d-block mx-auto" src="img/brand/5.png" alt="">
-				</a>
-			</div>
-		</div>
-	</section> {% endcomment %}
-	<!-- End brand Area -->
-
-	<!-- Start related-product Area -->
-	{% comment %} <section class="related-product-area section_gap_bottom">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-lg-6 text-center">
-					<div class="section-title">
-						<h1>Deals of the Week</h1>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-							magna aliqua.</p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-9">
-					<div class="row">
-						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="img/r1.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="img/r2.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="img/r3.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="img/r5.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="img/r6.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="img/r7.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="img/r9.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="img/r10.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="img/r11.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3">
-					<div class="ctg-right">
-						<a href="#" target="_blank">
-							<img class="img-fluid d-block mx-auto" src="img/category/c5.jpg" alt="">
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section> {% endcomment %}
 	<section class="related-product-area section_gap_bottom">
 		<div class="container">
 			<div class="row justify-content-center">
@@ -579,7 +347,7 @@
 								{% endif %}
 								<div class="desc">
 									
-									<a href="{{x.get_url}}" class="title">{{ x.category.title}}</a>
+									<a href="{{x.get_url}}" class="title">{{ x.name}}</a>
 									<div class="price">
 										<h6>₹ {{ x.price }}</h6>
 										{% comment %} <h6 class="l-through">$210.00</h6> {% endcomment %}

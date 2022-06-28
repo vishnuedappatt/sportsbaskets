@@ -51,8 +51,7 @@
 								<label for="f-option2">Keep me logged in</label>
 							</div> -->
 						<!-- </div> -->
-						<div class="stars">
-						
+						<div   class="stars" style="margin-left: -50px;">						
 							  <input class="star star-5" id="star-5"  type="radio" value="5" name="star"/>
 							  <label class="star star-5" for="star-5"></label>
 							  <input class="star star-4" id="star-4" type="radio" value="4" name="star"/>
@@ -78,19 +77,19 @@
 							transition: all .2s;
 						  }
 						  input.star:checked ~ label.star:before {
-							content: '\f005';
+							content: '\2605';
 							color: rgb(247, 205, 16);
 							transition: all .25s;
 						  }
 						  input.star-5:checked ~ label.star:before {
 							color: rgb(220, 196, 11);
-							text-shadow: 0 0 20px #952;
+							
 						  }
 						  input.star-1:checked ~ label.star:before { color: #F62; }
 						  label.star:hover { transform: rotate(-15deg) scale(1.3); }
 						  label.star:before {
-							content: '\f006';
-							font-family: FontAwesome;
+							content: '\2605';
+							
 						  }</style>
 						<div class="col-md-12 form-group">
 							<button type="submit" value="submit" class="primary-btn">Upload</button>

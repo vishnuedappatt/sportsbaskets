@@ -56,11 +56,11 @@
                 </td>              
              
               <td>
-                <a style="color:green;" href="{% url 'edit_brand' x.id %}"><i class=" mdi mdi-lead-pencil "  aria-hidden="true"></i> </a>                
+                <a style="color:green;" href="{% url 'edit_brand' x.id %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>                
           
               </td>
               <td>
-                <a style="color: red;" onclick="return confirm('are you sure to delete'+''+ '{{x.title}}')" href="{% url 'delete_brand' x.id %}"><i class=" mdi mdi-delete " aria-hidden="true"></i></a>
+                <a style="color: red;" onclick="return confirm('are you sure to delete'+''+ '{{x.title}}')" href="{% url 'delete_brand' x.id %}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                  
               </td>
               

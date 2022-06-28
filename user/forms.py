@@ -1,11 +1,6 @@
-from dataclasses import fields
-import imp
-from pyexpat import model
-from xml.dom import ValidationErr
 from django import forms
-from requests import request
 from  . models import Account,Address
-from django.contrib import messages
+
 
 
 
@@ -26,7 +21,7 @@ class RegistrationForm(forms.ModelForm):
         self.fields['last_name'].widget.attrs['placeholder']='Enter last name'
         self.fields['email'].widget.attrs['placeholder']='Enter email'
         self.fields['phone_number'].widget.attrs['placeholder']='Enter phone number'
-
+    
         for field in self.fields:
             self.fields[field].widget.attrs['class']='form-control'
 
@@ -35,22 +30,22 @@ class RegistrationForm(forms.ModelForm):
         password=cleaned_data.get('password')
         confirm_password=cleaned_data.get('confirm_password')
         phone_number=cleaned_data.get('phone_number')
-
-        if password !=confirm_password:
-            
-            raise forms.ValidationError(
-                'password doesnot match...'
-                
-            )
-        if len(password)<8:
-            raise forms.ValidationError(
-                'password Mismatch'
-            )
-            
+           
         if len(phone_number) !=10:
             raise forms.ValidationError(
                 'please enter valid number'
             )
+        if password !=confirm_password:            
+            raise forms.ValidationError(
+                'password doesnot match...'
+                
+            )
+      
+        if len(password)<8:
+            raise forms.ValidationError(
+                'password must contain atleast 8 charactors'
+            )
+         
         
 
 

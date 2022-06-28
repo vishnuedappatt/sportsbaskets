@@ -166,25 +166,25 @@ def payments(request):
     return render(request,'orders/razor_payments.html',context)
 
 
-def captcha_verify(request):
-     if request.method=='POST':
-        if 'g-recaptcha-response' in request.POST:
-            recaptcha_response = request.POST.get('g-recaptcha-response')
-            url = 'https://www.google.com/recaptcha/api/siteverify'
-            values = {
-                'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
-                'response': recaptcha_response
-            }
-            data = urllib.parse.urlencode(values).encode()
-            req =  urllib.request.Request(url, data=data)
-            response = urllib.request.urlopen(req)
-            result = json.loads(response.read().decode())
-            ''' End reCAPTCHA validation '''
+# def captcha_verify(request):
+#      if request.method=='POST':
+#         if 'g-recaptcha-response' in request.POST:
+#             recaptcha_response = request.POST.get('g-recaptcha-response')
+#             url = 'https://www.google.com/recaptcha/api/siteverify'
+#             values = {
+#                 'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
+#                 'response': recaptcha_response
+#             }
+#             data = urllib.parse.urlencode(values).encode()
+#             req =  urllib.request.Request(url, data=data)
+#             response = urllib.request.urlopen(req)
+#             result = json.loads(response.read().decode())
+#             ''' End reCAPTCHA validation '''
 
-            if result['success']:
-                return redirect('payment_status')
-            else:
-                messages.error(request,'captcha error')
+#             if result['success']:
+#                 return redirect('payment_status')
+#             else:
+#                 messages.error(request,'captcha error')
 
 
 

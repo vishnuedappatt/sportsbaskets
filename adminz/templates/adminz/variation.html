@@ -1,10 +1,5 @@
-
-
 {% extends 'adminz/base.html' %}
-
-
 {% block content %}
-
 
 <div class="col-lg-12 grid-margin stretch-card">
   <div class="card">
@@ -35,7 +30,6 @@
         <table class="table table-striped">
           <thead>
             <tr>
-            
               <th style="font-weight: 600;">
                 product
               </th>
@@ -57,12 +51,10 @@
               <th style="font-weight: 600;">
                  Delete
               </th>
-            
             </tr>
           </thead>
           <tbody>
             <tr>{% for x in var %}
-            
                 <td>
                   <h5> {{x.product}}</h5>
                 </td>
@@ -77,19 +69,16 @@
                 </td>
                 <td>
                   <h5> {{x.created_date}}</h5>
-                </td>
-             
+                </td>            
                 
-          
               <td>
-                <a style="color:green;" href="{% url 'edit_variation' x.id %}"><i class=" mdi mdi-lead-pencil "  aria-hidden="true"></i> </a>                
+                <a style="color:green;" href="{% url 'edit_variation' x.id %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> </a>                
           
               </td>
               <td>
-                <a style="color: red;" onclick="return confirm('are you sure to delete'+''+ '{{x.title}}')" href="{% url 'delete_variation' x.id %}"><i class=" mdi mdi-delete " aria-hidden="true"></i></a>
+                <a style="color: red;" onclick="return confirm('are you sure to delete'+''+ '{{x.title}}')" href="{% url 'delete_variation' x.id %}"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
                  
-              </td>
-              
+              </td>              
             </tr>
             {% endfor %}
           </tbody>
@@ -98,10 +87,4 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
 {% endblock %}

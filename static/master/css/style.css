@@ -20723,7 +20723,7 @@ dl li {
   -webkit-transition: background 0.25s ease;
   -moz-transition: background 0.25s ease;
   -ms-transition: background 0.25s ease;
-  background: url(../images/other/navbar-cover.jpg) center center no-repeat;
+  background: url() center center no-repeat;
   background-size: cover;
   height: 262px;
   width: auto;

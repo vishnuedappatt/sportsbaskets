@@ -12,18 +12,19 @@
     </div>
     </div>
     {% else %}
-    {% if messages %}
-    <ul class="messages">
-      {% for message in messages %}
-                      
-        <div class="alert alert-success alert-dismissiblen ">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <strong>{{message}}</strong> 
-        </div>
-      {% endfor %}
-    </ul>
-    {% endif %}
+  
     <div style="margin-top: 150px;" class="container ">
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+                        
+          <div class="alert alert-success alert-dismissiblen ">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>{{message}}</strong> 
+          </div>
+        {% endfor %}
+      </ul>
+      {% endif %}
        <h3 style="text-align: center;">order history</h3>
         <div class="row">{% for item in item %}
             <div class="col-lg-12 ">
@@ -44,7 +45,7 @@
                                   <img  class="mt-5 shadow" style="width: 80px;height: 80p;" src="{{item.product.image.url}}" alt="">
                                 </div>
                                 <div class="widget-49-meeting-info">
-                                    <span style="color: black; font-size: 20px;margin-left: 50px;" class="">{{item.product.name}} <span style="margin-left: 500px; font-size: 12px;"></span></span>
+                                   <a href="{{item.product.get_url}}"> <span style="color: black; font-size: 20px;margin-left: 50px;" class="">{{item.product.name}} <span style="margin-left: 500px; font-size: 12px;"></span></span></a>
                                     
                         
                                     <span style="color: black; font-size: 12px;margin-left: 50px;" class="">quantity: {{item.quantity}}</span>
