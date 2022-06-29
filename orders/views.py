@@ -379,6 +379,7 @@ def cod(request):
     pay.user=current_user
     pay.amount_paid=paisa
     pay.order_id=order_number
+    pay.paid=True
     pay.save()
 
     context={

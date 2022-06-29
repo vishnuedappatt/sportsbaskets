@@ -10,9 +10,9 @@
         <div class="col-first">
           <!-- <h1>Shop Category page</h1> -->
           <nav class="d-flex align-items-center">
-            <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+            <a href="index.html">Home<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
             <a href="#">Shop<span class="lnr lnr-arrow-right">{{categor}}</span></a>
-            <a href="category.html"></a>
+            <a href=""></a>
           </nav>
         </div>
       </div>
@@ -139,19 +139,19 @@
                   <div class="prd-bottom">
 
                     <a href="{{ pro.get_url }} " class="social-info">
-                      <span class="ti-bag bg-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+                      <span class=" bg-primary"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
                       <p class="hover-text">add to bag</p>
                     </a>
                     <a href="{% url 'wishlist_add' pro.id %}" class="social-info">
-                      <span class="lnr lnr-heart bg-danger"><i class="fa fa-gratipay" aria-hidden="true"></i></span>
+                      <span class="lnr  bg-danger"><i class="fa fa-gratipay" aria-hidden="true"></i></span>
                       <p class="hover-text">Wishlist</p>
                     </a>
                     <!-- <a href="" class="social-info">
                       <span class="lnr lnr-sync"></span>
                       <p class="hover-text">compare</p>
                     </a> -->
-                    <a href="" class="social-info">
-                      <span class="lnr lnr-move"></span>
+                    <a href="{{ pro.get_url }}" class="social-info">
+                      <span class="lnr bg-secondary"><i class="fa fa-plus-circle" aria-hidden="true"></i></span>
                       <p class="hover-text">view more</p>
                     </a>
                   </div>
