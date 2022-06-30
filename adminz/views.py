@@ -765,6 +765,8 @@ def delete_variation(request,id):
 
 
 def adminlogout(request):
+    if 'admin' in request.session:
+        request.session.flush()
     auth.logout(request)
     messages.info(request,'susessfully loged out')
     return redirect('home')
@@ -786,7 +788,6 @@ def paymentlist(request):
         sum+=x.product_price
 
     pro_count=Product.objects.all().count()
-    # products=Product.objects.get(slug='nivia-supreme')
 
 
     

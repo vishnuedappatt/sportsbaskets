@@ -17,7 +17,8 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Sportsbasket.com</title>
+	<title>Sportsbasket</title>
+	<link rel="icon" type="" href="{%  static 'home/images/bg/l1.png' %}">
 	<!--
 		CSS
 		============================================= -->
@@ -47,7 +48,7 @@
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
 					<a class="navbar-brand logo_h" href=""><img style="width: 70px; height: 70px;" src="{%  static 'home/images/bg/l1.png' %}" alt=""></a>
-					<h3>SportsBascket.com</h3>
+					<h3>SportsBascket</h3>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="icon-bar"></span>
@@ -125,22 +126,23 @@
 		</div>
 	</header>
 	<!-- End Header Area -->
-	{% if messages %}
-	<ul class="messages">
-	  {% for message in messages %}
-					  
-		<div class="alert alert-success alert-dismissiblen ">
-		  <button type="button" class="close" data-dismiss="alert">&times;</button>
-		  <strong>{{message}}</strong> 
-		</div>
-	  {% endfor %}
-	</ul>
-	{% endif %}
+
 	<!-- start banner Area -->
 	<section class="banner-area">
 		<div class="container">
 			<div class="row fullscreen align-items-center justify-content-start">
 				<div class="col-lg-12">
+					{% if messages %}
+					<ul class="messages">
+					  {% for message in messages %}
+									  
+						<div class="alert alert-success alert-dismissiblen ">
+						  <button type="button" class="close" data-dismiss="alert">&times;</button>
+						  <strong>{{message}}</strong> 
+						</div>
+					  {% endfor %}
+					</ul>
+					{% endif %}
 					<div class="active-banner-slider owl-carousel">
 						<!-- single-slide -->
 						<div class="row single-slide align-items-center d-flex">
