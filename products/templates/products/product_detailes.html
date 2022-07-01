@@ -97,9 +97,9 @@
 								
 								{% if  single_product.variation_set.all %}
 								<h5>size</h5>
-								<select  name="size" class="form-control bg-black" >	
+								<select  name="size" class="form-control bg-black" required >	
 									
-									<option value="" disabled >Select</option>
+									<option value="" >Select size</option>
 									{%  for i in single_product.variation_set.all %}						
 											
 									<option value="{{ i.variation_value | lower }}">{{ i.variation_value | capfirst }}</option>		

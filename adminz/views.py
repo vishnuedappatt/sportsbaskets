@@ -739,10 +739,10 @@ def edit_variation(request,id):
 
 @user_passes_test(lambda u: u in account ,login_url='admin_login')
 def add_variation(request):
-    try:
-       
+    try:       
         form=VariationForm()
-        if request.method=='POST':          
+        if request.method=='POST': 
+            form=VariationForm(request.POST)         
             if form.is_valid():
                 form.save()
                 return redirect('variationshow')
