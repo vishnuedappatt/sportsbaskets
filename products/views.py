@@ -421,8 +421,7 @@ def checkout(request, total=0, quantity=0, cart_items=None):
 
     if request.method=='POST':
         form=AddresssForm(request.POST)  
-        print(form.is_valid()) 
-        print(form.is_valid )
+      
         if form.is_valid():           
             data=Address()
             data.user=request.user

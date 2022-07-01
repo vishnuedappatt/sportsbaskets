@@ -169,7 +169,7 @@ def login(request):
             except:
                 return redirect('home')
         else:
-             messages.error(request,'invalid cridential')
+             messages.error(request,'invalid credential')
              return redirect('login')
 
     else: 
@@ -432,7 +432,7 @@ def change_password(request):
                 messages.success(request,'successfully change the password')
                 return redirect('login')
             else:
-                messages.error(request,'incurrect current password')
+                messages.error(request,'incorrect current password')
                 return redirect('change_password')
         else:
             messages.error(request,'password missmatch')

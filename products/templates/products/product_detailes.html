@@ -92,19 +92,22 @@
 								
 													
 						
-				
-							<div class="card_area d-flex align-items-center ml-3">
+					
+
+						
+							<div class="card_area d-flex align-items-center ml-1">
 								
 								{% if  single_product.variation_set.all %}
-								<h5>size</h5>
-								<select  name="size" class="form-control bg-black" required >	
-									
-									<option value="" >Select size</option>
-									{%  for i in single_product.variation_set.all %}						
-											
-									<option value="{{ i.variation_value | lower }}">{{ i.variation_value | capfirst }}</option>		
-									{% endfor %}					
-								</select>	
+								<h5>size</h5>									
+									<select  name="size" class="form-control bg-black" required >	
+										
+										<option value="" >Select size</option>
+										{%  for i in single_product.variation_set.all %}						
+												
+										<option value="{{ i.variation_value | lower }}">{{ i.variation_value | capfirst }}</option>		
+										{% endfor %}					
+									</select>	
+								
 								{% endif %}
 								{% if single_product.stock == 0 %}
 								<div>
@@ -112,13 +115,14 @@
 								</div>								
 								{% else %}
 								
-								<button type="submit" style="border-radius: 50px;" class="btn btn-lg ml-5 btn-primary">Add To cart</button>							
+								<button type="submit" style="border-radius: 50px;" class="btn btn-lg ml-1 btn-primary">Add To cart</button>							
 													
 										
 								{% endif %}
-								<button  style="border-radius: 50px;background-color: #ffff;border:solid 2px #007bff;" class="btn btn-lg ml-5 btn-primary"><a  href="{% url 'wishlist_add' single_product.id %}"> Add to Fav</a>	</button>
+								<button  style="border-radius: 50px;background-color: #ffff;border:solid 2px #007bff;" class="btn btn-lg ml-1 btn-primary"><a  href="{% url 'wishlist_add' single_product.id %}"> Add to Fav</a>	</button>
 							
 							</div>
+						
 						</div>
 					</div>
 				</form>
