@@ -457,6 +457,7 @@ def cod_verify(request):
             messages.success(request,'your order placed success fullyy')
             return redirect('home')
         else:   
-            return HttpResponse('failed')    
+            messages.error(request,'Wrong code Try again')   
+            return redirect('cod_verify')
             
     return render(request,'orders/cod_verify.html')
