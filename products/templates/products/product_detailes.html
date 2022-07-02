@@ -11,7 +11,7 @@
 					<h1>{{single_product.category}}</h1>
 					<nav class="d-flex align-items-center">
 						<a href="index.html">Home<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-						<a href="#">{{single_product.category}}<span class="lnr lnr-arrow-right"></span></a>
+						<a href="#">{{single_product.category}}<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
 						<a href="">{{single_product.name}}</a>
 						
 					</nav>
@@ -80,25 +80,34 @@
 							</div>
 								
 							<h3 style="color: rgb(253, 8, 8);font-weight:700 ;">₹ {{ single_product.price}}</h3>
-							<ul class="list">
+							<ul class="list ">
 								<li><a class="active" href="#"><span>{{ single_product.category }}</span> : Household</a></li>
 								{% if single_product.stock == 0 %}
 								<li><a href="#"><span>Availibility</span> : Out of Stock</a></li>
 								{% else %}
 								<li><a href="#"><span>Availibility</span> : In Stock</a></li>
 								{% endif %}
-							</ul>	
-							<P>{{ single_product.description }}</P>
+							
+							</ul>
+							<!-- <div class="tab-content" id="myTabContent">
+								<div class="" id="home" role="tabpanel" aria-labelledby="home-tab">
+									<p>{{ single_product.description }}</p>
+								</div>
+							 -->
+							<!-- </div> -->
+							<p >{{ single_product.description }}</P>
+							
+							
 								
 													
 						
 					
 
-						
+						<h5 style="margin-left: 50px;">size</h5>	
 							<div class="card_area d-flex align-items-center ml-1">
 								
 								{% if  single_product.variation_set.all %}
-								<h5>size</h5>									
+																
 									<select  name="size" class="form-control bg-black" required >	
 										
 										<option value="" >Select size</option>

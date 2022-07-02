@@ -24,7 +24,7 @@
       <div class="head">Browse Categories</div>
       <ul class="main-categories">  
         <li class="main-nav-list"><a data-toggle="collapse" href="#fruitsVegetable" aria-expanded="false" aria-controls="fruitsVegetable"><span
-            class="lnr lnr-arrow-right"></span><strong>{{categor}} </strong><span class="number"></span></a>
+            class="lnr lnr-arrow-right"></span><strong>{{categor}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-double-down" aria-hidden="true"></i> </strong><span class="number"></span></a>
           <ul class="collapse" id="fruitsVegetable" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
             {% for  subcat in sublinks %} {% if subcat.category == categor %}
             <li class="main-nav-list child"><a href="{{ subcat.get_url }}">{{subcat.name}} <span class="number"></span></a></li>

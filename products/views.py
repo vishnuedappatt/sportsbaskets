@@ -440,7 +440,7 @@ def checkout(request, total=0, quantity=0, cart_items=None):
             return redirect ('checkout')
         else:
             if not 'coupon' in request.POST :
-                messages.error(request,'Please enter correct data')
+                messages.error(request,'Please enter correct data /or please avoid auto added data(suggessions) please type manuely')
       
     try:
         tax=0
