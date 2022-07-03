@@ -29,23 +29,31 @@
 						<div class=" MainImage"mainImage>
 							{% if single_product.image %}
 							<img class="img-fluid"src="{{ single_product.image.url }}"  alt="">
+							{% else %}
+							<img src="{%  static 'home/images/bg/mop.png' %}" class="rounded-circle border border-2 border-primary" alt="Avatar"alt="images">
 							{% endif%}
 						</div>
 					
 						<div class="single-prd-item">
 							{% if single_product.image1 %}
 							<img class="img-fluid" src="{{ single_product.image1.url }}" alt="">
+							{% else %}
+							<img src="{%  static 'home/images/bg/mop.png' %}" class="rounded-circle border border-2 border-primary" alt="Avatar"alt="images">
 							{% endif %}
 						</div>
 						
 					 <div class="single-prd-item">
 						{% if single_product.image2 %}
 							<img class="img-fluid" src="{{ single_product.image2.url }}" alt="">
+							{% else %}
+							<img src="{%  static 'home/images/bg/mop.png' %}" class="rounded-circle border border-2 border-primary" alt="Avatar"alt="images">
 							{% endif %}
 						</div>
 						<div class="single-prd-item">
 							{% if single_product.image3 %}
 							<img class="img-fluid" src="{{ single_product.image3.url }}" alt="">
+							{% else %}
+							<img src="{%  static 'home/images/bg/mop.png' %}" class="rounded-circle border border-2 border-primary" alt="Avatar"alt="images">
 							{% endif %}
 						</div> 
 					</div>
@@ -95,7 +103,7 @@
 								</div>
 							 -->
 							<!-- </div> -->
-							<p >{{ single_product.description }}</P>
+							<p class="w-100" >{{ single_product.description }}</P>
 							
 							
 								
@@ -110,7 +118,7 @@
 																
 									<select  name="size" class="form-control bg-black" required >	
 										
-										<option value="" >Select size</option>
+										<option value="" >size</option>
 										{%  for i in single_product.variation_set.all %}						
 												
 										<option value="{{ i.variation_value | lower }}">{{ i.variation_value | capfirst }}</option>		

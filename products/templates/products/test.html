@@ -210,7 +210,13 @@
             <div class="col-lg-3 col-md-4 col-sm-6 col-6 ">
                 <div class="productcategory text-center">
                     <div class="productcategory-img mt-5">
-                        <a href="{{  link.get_url }}"><img src="{{ link.image.url}}" class="rounded-circle border border-2 border-primary" alt="Avatar"alt="images"></a>
+                        <a href="{{  link.get_url }}">
+							{% if  link.image %}
+							<img src="{{ link.image.url}}" class="rounded-circle border border-2 border-primary" alt="Avatar"alt="images">
+							{% else %}
+							<img src="{%  static 'home/images/bg/mopped.png' %}" class="rounded-circle border border-2 border-primary" alt="Avatar"alt="images">
+							{% endif %}
+						</a>
                     </div>
                     <div class="productcategory-text">
                         <a href="#">
