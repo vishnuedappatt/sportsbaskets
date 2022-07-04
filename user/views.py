@@ -329,6 +329,9 @@ def verify_code(request):
                 user.is_active = True
                 user.save()               
                 return redirect('login')
+            else:
+                messages.success(request,'enter the correct otp')     
+                return redirect('verify')
     
     else:
         form = VerifyForm()

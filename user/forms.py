@@ -2,8 +2,6 @@ from django import forms
 from  . models import Account,Address
 
 
-
-
 class RegistrationForm(forms.ModelForm):
     password =forms.CharField(widget=forms.PasswordInput(attrs={
         'placeholder':'enter password'}))
@@ -45,16 +43,10 @@ class RegistrationForm(forms.ModelForm):
             raise forms.ValidationError(
                 'password must contain atleast 8 charactors'
             )
-         
-        
-
 
 
 class VerifyForm(forms.Form):
     code = forms.CharField(max_length=8, required=True, help_text='Enter code')
-
-
-
 
 
 class AddresssForm(forms.ModelForm):
