@@ -14,8 +14,6 @@ from django.contrib import messages
 
 
 
-
-
 def home(request):
     if 'admin' in request.session:
         return redirect('adminhome')
@@ -117,7 +115,7 @@ def product_detail(request,category_slug,subcategory_slug,product_slug):
         related_product=Product.objects.filter(Subcategory__slug=subcategory_slug)[0:5]
         in_cart = CartItem.objects.filter(cart__cart_id=_cart_id(request),product=single_product).exists()
         review=Reviews.objects.filter(product=item)
-        # review=Reviews.objects.filter(product=item)
+        # review=Reviews.objects.filter(product=item) 
         reviewcount=review.count()
         if reviewcount >0:
             for rate in review:
@@ -125,8 +123,6 @@ def product_detail(request,category_slug,subcategory_slug,product_slug):
                     rating+=rate.rating
             Star=int(rating/reviewcount)
 
-       
-    
     
     except Exception as e:
         raise e 
@@ -314,11 +310,10 @@ def add_cart(request,product_id):
                 item = CartItem.objects.create(product=product,quantity=1, cart=cart) #create for several variation contains several product
                 if len(product_variation) > 0: #checking the variation available or not
                     item.variations.clear()                
-                    item.variations.add(*product_variation)
-                  
-                                       
-                    
-                cart_item.save()
+                    item.variations.add(*product_variation)                                                
+                # changed here
+                item.save()
+                
         else:
             cart_item = CartItem.objects.create(product=product, quantity=1, cart=cart)
             if len(product_variation) > 0:
@@ -420,8 +415,7 @@ def checkout(request, total=0, quantity=0, cart_items=None):
     address=0
 
     if request.method=='POST':
-        form=AddresssForm(request.POST)  
-      
+        form=AddresssForm(request.POST)        
         if form.is_valid():           
             data=Address()
             data.user=request.user

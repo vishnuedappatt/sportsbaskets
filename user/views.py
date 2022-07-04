@@ -275,39 +275,43 @@ def resetPassword(request):
 
 def register(request):
     if request.method == 'POST':
-        form =RegistrationForm(request.POST)
+        form =RegistrationForm(request.POST)        
         print('adfdfafdd')
-        if form.is_valid():
-            first_name =form.cleaned_data['first_name']
-            last_name =form.cleaned_data['last_name']
-            phone_number =form.cleaned_data['phone_number']            
-            email =form.cleaned_data['email']
-            password =form.cleaned_data['password']
-            username=email.split("@")[0]
-            length=len(password)
-            print('heyy')
-            print('helloooeerr')
-            if Account.objects.filter(phone_number=phone_number).exists():
-                messages.error(request,'phone number already exist')
+        try:
+            if form.is_valid():
+                first_name =form.cleaned_data['first_name']
+                last_name =form.cleaned_data['last_name']
+                phone_number =form.cleaned_data['phone_number']            
+                email =form.cleaned_data['email']
+                password =form.cleaned_data['password']
+                username=email.split("@")[0]
+                length=len(password)
+                print('heyy')
+                print('helloooeerr')
+                if Account.objects.filter(phone_number=phone_number).exists():
+                    messages.error(request,'phone number already exist')
+                    
+                    
+                elif Account.objects.filter(email=email).exists():
+                    messages.error(request,'email  already exist')
                 
+                elif length <8:
+                    messages.error(request,'password should be 8 strong charectors')
                 
-            elif Account.objects.filter(email=email).exists():
-                messages.error(request,'email  already exist')
-               
-            elif length <8:
-                messages.error(request,'password should be 8 strong charectors')
-               
-            else:                       
-                user =Account.objects.create_user(first_name=first_name,last_name=last_name,email=email,username=username,password=password)            
-                user.phone_number=phone_number
-                user.save()
-                request.session['phone_number']=phone_number
-                print(phone_number)
-                send(form.cleaned_data.get('phone_number'))  
-                print(phone_number) 
-                messages.success(request,'OTP sent your phone number')              
-                return redirect('verify')      
-        
+                else:                       
+                    user =Account.objects.create_user(first_name=first_name,last_name=last_name,email=email,username=username,password=password)            
+                    user.phone_number=phone_number
+                    user.save()
+                    request.session['phone_number']=phone_number
+                    print(phone_number)
+                    send(form.cleaned_data.get('phone_number'))  
+                    print(phone_number) 
+                    messages.success(request,'OTP sent your phone number')              
+                    return redirect('verify')      
+        except:           
+      
+            messages.error(request,'fill the blanks')
+            return redirect ('register')
     else:        
         form=RegistrationForm()
     context={
@@ -319,20 +323,25 @@ def register(request):
 def verify_code(request):
     if request.method == 'POST':
         form = VerifyForm(request.POST)
-        if form.is_valid():
-            code = form.cleaned_data.get('code')
-            print(code)
-            print('x')   
-            phone_number=request.session['phone_number']
-            if check(phone_number, code):  
-                user=Account.objects.get(phone_number=phone_number)
-                user.is_active = True
-                user.save()               
-                return redirect('login')
-            else:
-                messages.success(request,'enter the correct otp')     
-                return redirect('verify')
+        try:
+            if form.is_valid():
+                code = form.cleaned_data.get('code')
+                print(code)
+                print('x')   
+                phone_number=request.session['phone_number']
+                if check(phone_number, code):  
+                    user=Account.objects.get(phone_number=phone_number)
+                    user.is_active = True
+                    user.save()               
+                    return redirect('login')
+                else:
+                    messages.success(request,'enter the correct otp')     
+                    return redirect('verify')
+        except:
+            messages.error(request,'fill the blanks')
+            return redirect('verify')
     
+    \
     else:
         form = VerifyForm()
     return render(request, 'user/verify.html', {'form': form})
