@@ -16,7 +16,7 @@ To get started you can simply clone this sportsbasket project repository and ins
 Clone the ecommerce-demo repository using git:
 ```python
 git clone https://github.com/imviz/sportsbasket.com
-cd cd sportsbasket.com
+ cd sportsbasket.com
 ```
 Create a virtual environment to install dependencies in and activate it:
 ```python
