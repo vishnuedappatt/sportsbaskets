@@ -3,13 +3,30 @@ This is a sample application that demonstrates an e-commerce website using the P
 In admin side, admins can manage users,products,categories,discount coupons,orders etc...
 
 
-## Live Demonstration
+## Demonstration
 
-The E-commerce demo can be viewed online here: https://sportsbasket.tk
+Here is the screencast that show the E-commerce demo application in use: 
+https://www.linkedin.com/posts/vishnu-p-edappatt_javascript-python-html-activity-6960576991674716160-k1hl?utm_source=share&utm_medium=member_desktop
 
-Here is the screencast that show the E-commerce demo application in use: https://www.linkedin.com/posts/vishnu-p-e-6b4049231_javascript-python-html-activity-6960576991674716160-ofB3?utm_source=share&utm_medium=member_desktop
+## Key Features
+#### User Modules
+* User signUp using OTP (Twilio)
+* User authentication with Email or password
+* Email verification if forgot Password
+* Cart functionality with product variations
+* Add products to the cart even without signing-in, prompts a login page whenever the customer tries to checkout
+* Discount coupons
+* Sort products by price
+* Payment using Razorpay,COD
+* User can download invoice
+#### Admin Modules
+* Can analyze monthly orders in a graphical format
+* Add featured products, coupons,category etc
+* CRUD operations for products
+* User management
+* Payment details
 
-
+ APIs integrated -  __Twilio,Razorpay ,googleReCaptch__
 ## Getting started
 To get started you can simply clone this sportsbasket project repository and install the dependencies.
 
